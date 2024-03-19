@@ -9,7 +9,7 @@ The AXP Core module provides the basic functionality to configure the SDK and re
     Installing, downloading, copying or using this SDK is subject to terms and conditions available in the LICENSE file
 ## Installation
 
-Before you can start using the Messaging SDK, there are a few setup steps you need to complete.
+Before you can start using the Core & Messaging SDK, there are a few setup steps you need to complete.
 
 ### Provisioning Requirements
 
@@ -208,3 +208,6 @@ View [LICENSE.md](./LICENSE)
 ## Changelog
 
 View [CHANGELOG.md](./CHANGELOG.md)
+
+
+For more information about messaging, please refer to the [AXP-Messaging](./messaging.md) document.

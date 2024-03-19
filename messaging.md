@@ -1,14 +1,12 @@
 # AXP-Messaging
 
-Welcome to the AXP Messaging module! This powerful tool is part of the Avaya Experience Platform™ Digital, a software platform designed to enhance business communication. 
+The AXP Messaging Sdk enables asynchronous communication, allowing end users to resume conversation threads at any time and view all previous messages exchanged as part of the conversation. This is unlike a session-based chat, where the chat is closed after the participants disconnect the dialog.
 
-The AXP Messaging module enables asynchronous communication, allowing end users to resume conversation threads at any time and view all previous messages exchanged as part of the conversation. This is unlike a session-based chat, where the chat is closed after the participants disconnect the dialog.
+This document will guide you through the installation and usage of the AXP Messaging Sdk. Let's get started!
 
-This document will guide you through the installation and usage of the AXP Messaging module. Let's get started!
+### Adding the AXP Messaging SDK to Your Project
 
-### Adding the AXP Messaging Module to Your Project
-
-The AXP Messaging module is distributed as a Maven artifact. To include it in your project, you need to add the following lines to your `build.gradle` file:
+The AXP Messaging sdk is distributed as a Maven artifact. To include it in your project, you need to add the following lines to your `build.gradle` file:
 
 If you're using Groovy, add:
 
@@ -28,23 +26,23 @@ dependencies {
 
 In both cases, replace ${avayaSdkVersion} with the latest version of the AXP SDK. You can find the latest version on the [AXP SDK releases page]().
 
-After adding these lines, run a build to download and integrate the AXP Messaging module into your project.
+After adding these lines, run a build to download and integrate the AXP Messaging sdk into your project.
 
 With these steps, you should be ready to start using the Messaging SDK in your project. If you encounter any issues, please refer to our [troubleshooting guide]() or contact our [support team]().
 
 ## Functionality
 
-The AXP Messaging module offers a range of features, including adding and removing idle timeout listeners, emitting idle timeouts, listening to event states, reconnecting sessions, resetting idle timeouts, and fetching notification data.
+The AXP Messaging sdk offers a range of features, including adding and removing idle timeout listeners, emitting idle timeouts, listening to event states, reconnecting sessions, resetting idle timeouts, and fetching notification data.
 
-## Sending a Message with the AXP Messaging Module
+## Sending a Message with the AXP Messaging sdk
 
-The AXP Messaging module allows you to send messages to agents in AXP. This feature is built on the AXP Core module, which manages user sessions.
+The AXP Messaging sdk allows you to send messages to agents in AXP. This feature is built on the AXP Core sdk, which manages user sessions.
 
 ### Prerequisites
 
 Before you can send a message, you need a valid `Conversation`. You can obtain this by calling `AxpClientSdk.getDefaultConversation()` from the AXP Core module.
 
-Here's an example of starting a new user session:
+Here's an example of getting default conversation:
 
 ```kotlin
 launch {
