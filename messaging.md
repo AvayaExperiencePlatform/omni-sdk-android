@@ -6,19 +6,6 @@ The AXP Messaging module enables asynchronous communication, allowing end users 
 
 This document will guide you through the installation and usage of the AXP Messaging module. Let's get started!
 
-### :warning: Disclaimer
-
-    Installing, downloading, copying or using this SDK is subject to terms and conditions available in the LICENSE file
-## Installation
-
-Before you can start using the Messaging SDK, there are a few setup steps you need to complete.
-
-### Provisioning Requirements
-
-First, ensure that the messaging integration provisioning requirements are met. This involves providing the `integrationId`, a valid JWT Token Provider, and an Application Key `appkey` during the [initialization process](https://developers.avayacloud.com/avaya-experience-platform/docs/digital-channel-javascript-sdk-overview#initialization). 
-
-For detailed instructions on how to provision the messaging integration, obtain the `integrationId` and `appkey`, and generate a valid JWT Token, please refer to [this guide](https://developers.avayacloud.com/avaya-experience-platform/docs/digital-channel-chat-sdk-provisioning).
-
 ### Adding the AXP Messaging Module to Your Project
 
 The AXP Messaging module is distributed as a Maven artifact. To include it in your project, you need to add the following lines to your `build.gradle` file:
