@@ -35,7 +35,7 @@ Replace {path} with the absolute path to the .aar files.
 ### Include Additional Dependencies:
 
 Integrate the following dependencies in app which will be utilized by sdks:
-Groovy
+- Groovy
 ```groovy
 dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -59,7 +59,7 @@ dependencies {
 }
 ```
 
-kotlinDSL
+- kotlinDSL
 ```kotlinDSL
    dependencies {
         implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -84,7 +84,7 @@ kotlinDSL
    }
 ```
 
-### Updating values in `CONSTANTS.kt` file
+### Updating values in [CONSTANTS.kt](./src/main/java/com/avaya/axp/client/sample_app_messaging/util/Constants.kt) file
 In constants file, update the following values:
 - `AUTH_BASE_URL` = replace with token server url
 - `USER_ID` = replace with customer user id
