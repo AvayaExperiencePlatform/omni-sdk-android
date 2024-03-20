@@ -40,18 +40,22 @@ class MessagingSdkViewModel : ViewModel() {
     private val logTag = "MessagingSdkViewModel"
 
     fun configureSdk() {
-        messagingSdkConfig = AxpClientSdk.sdkConfig ?: AxpClientSdk.configureSdk(
-            host = AXP_BASE_URL,
-            appKey = AXP_APP_KEY,
-            integrationId = AXP_INTEGRATION_ID,
-            jwtProvider = MyJwtProvider(),
-            configMap = mapOf(
-                SdkConfigKey.HTTP_LOG_LEVEL to HttpLogLevel.BASIC,
-                SdkConfigKey.DISPLAY_NAME to USER_NAME
+        try{
+            messagingSdkConfig = AxpClientSdk.sdkConfig ?: AxpClientSdk.configureSdk(
+                host = AXP_BASE_URL,
+                appKey = AXP_APP_KEY,
+                integrationId = AXP_INTEGRATION_ID,
+                jwtProvider = MyJwtProvider(),
+                configMap = mapOf(
+                    SdkConfigKey.HTTP_LOG_LEVEL to HttpLogLevel.BASIC,
+                    SdkConfigKey.DISPLAY_NAME to USER_NAME
+                )
             )
-        )
-        setUiFlags()
-        setUiEventHandler()
+            setUiFlags()
+            setUiEventHandler()
+        }catch (e:Exception){
+            Log.d(logTag, e.message.toString())
+        }
     }
 
     fun initSession(onComplete: (String?) -> Unit) {

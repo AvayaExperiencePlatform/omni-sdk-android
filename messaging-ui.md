@@ -1,6 +1,6 @@
 ## Introduction
 
-Welcome to the Avaya Messaging UI SDK documentation. This SDK seamlessly integrates with the Avaya Messaging SDK, providing a highly customizable user interface for chat screens while simplifying the integration of messaging operations into client applications. The Avaya Messaging UI SDK empowers developers to finely tailor the chat interface, allowing customization of colors, strings, and typography to meet the specific visual requirements of your application.
+Welcome to the Avaya Messaging UI SDK documentation. This SDK seamlessly integrates with the Avaya Messaging SDK, providing a highly customizable user interface for messaging screens while simplifying the integration of messaging operations into client applications. The Avaya Messaging UI SDK empowers developers to finely tailor the messaging interface, allowing customization of colors, strings, and typography to meet the specific visual requirements of your application.
 
 ## Features
 
@@ -48,11 +48,11 @@ The Avaya Messaging UI SDK empowers developers with robust customization feature
 
 To initiate customization, create an instance of `MessagingThemeConfig` and pass it to the UI SDK. This object acts as a blueprint for designing the UI according to your specifications. The `MessagingThemeConfig` encompasses four key parameters:
 
-- **Light Colors and Dark Colors:** `CustomColors` - These parameters enable you to define a spectrum of colors for various UI elements, such as text, background, chat windows, text field color, and button colors for carousel, reply, location, and postbacks. Customize light and dark color schemes to ensure a visually harmonious experience.
+- **Light Colors and Dark Colors:** `CustomColors` - These parameters enable you to define a spectrum of colors for various UI elements, such as text, background, messaging windows, text field color, and button colors for carousel, reply, location, and postbacks. Customize light and dark color schemes to ensure a visually harmonious experience.
   
-- **Typography:** `TextStyle` - Set the typography for all text components within the chat screen. By defining the typography, you seamlessly integrate your chosen font styles into the UI, providing a consistent and branded textual experience.
+- **Typography:** `TextStyle` - Set the typography for all text components within the messaging screen. By defining the typography, you seamlessly integrate your chosen font styles into the UI, providing a consistent and branded textual experience.
   
-- **Custom Icons Colors:** `CustomIconsAndColors` - Tailor the colors of icons used in the chat screen, such as the send message icon, attach file icon, and pick image icon. The flexibility extends to setting distinct colors for both light and dark themes, ensuring a cohesive and aesthetically pleasing UI.
+- **Custom Icons Colors:** `CustomIconsAndColors` - Tailor the colors of icons used in the messaging screen, such as the send message icon, attach file icon, and pick image icon. The flexibility extends to setting distinct colors for both light and dark themes, ensuring a cohesive and aesthetically pleasing UI.
   
 - **Custom Strings:** `CustomStrings` - Pass custom strings into the UI SDK, allowing you to modify text content according to your preferences. This feature supports localized strings, enabling a personalized and language-specific user experience.
 

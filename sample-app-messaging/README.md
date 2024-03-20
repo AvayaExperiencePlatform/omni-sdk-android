@@ -30,9 +30,11 @@ kotlinDSL
 ```
 Replace {path} with the absolute path to the .aar files.
 
-## Include Additional Dependencies:
+## Required Configurations
 
-Integrate the following dependencies in app:
+### Include Additional Dependencies:
+
+Integrate the following dependencies in app which will be utilized by sdks:
 Groovy
 ```groovy
 dependencies {
@@ -82,7 +84,7 @@ kotlinDSL
    }
 ```
 
-## Updating values in `CONSTANTS.kt` file
+### Updating values in `CONSTANTS.kt` file
 In constants file, update the following values:
 - `AUTH_BASE_URL` = replace with token server url
 - `USER_ID` = replace with customer user id
