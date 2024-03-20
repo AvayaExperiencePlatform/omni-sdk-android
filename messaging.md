@@ -28,7 +28,7 @@ In both cases, replace ${avayaSdkVersion} with the latest version of the AXP SDK
 
 After adding these lines, run a build to download and integrate the AXP Messaging sdk into your project.
 
-With these steps, you should be ready to start using the Messaging SDK in your project. If you encounter any issues, please refer to our [troubleshooting guide]() or contact our [support team]().
+With these steps, you should be ready to start using the Messaging SDK in your project.
 
 ## Functionality
 
@@ -132,35 +132,44 @@ if (messageIterator.hasNext()) {
 }
 ```
 
-## Receive Latest Messages
+## Receiving and Checking Delivery of Messages
 
-You can receive latest messages by adding a listener to the conversation or listening to the flow
+To receive the latest messages and check whether a message has been delivered to the server. You can achieve this by adding listeners to the conversation or using Kotlin's Flow.
+
+Here's how you can add a listener to receive the latest messages:
+
 
 ```kotlin
 // Using a listener
-conversation.addMessageArrivedListener { message ->
+val messageArrivedListener=MessageArrivedListener { message ->
     // You can now use the received message
 }
+conversation.addMessageArrivedListener(messageArrivedListener)
+```
 
-// Using flow
+Similarly, you can add a listener to check whether a message has been delivered to the server:
+
+```kotlin
+val messageDeliveredListener=MessageDeliveredListener { message ->
+    // You can now use the delivered message
+}
+conversation.addMessageDeliveredListener(messageDeliveredListener)
+```
+### Using Flow
+Here's how you can use Flow to receive the latest messages:
+```kotlin
 conversation.messageArrivedFlow.collect { message ->
     // You can now use the received message
 }
-
-To check whether message has been delivered to the server. You can listen by adding a listener to
-the conversation or listening to the flow
-
+```
+Similarly, you can use Flow to check whether a message has been delivered to the server:
 ```kotlin
-// Using a listener
-conversation.addMessageDeliveredListener { message ->
-    // You can now use the delivered message
-}
-
-// Using flow
 conversation.messageDeliveredFlow.collect { message ->
     // You can now use the delivered message
 }
 ```
+By using listeners or Flow, you can effectively handle incoming messages and check their delivery status in your application.
+
 
 ## Monitoring Participant Changes
 
