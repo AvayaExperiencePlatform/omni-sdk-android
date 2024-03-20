@@ -9,8 +9,7 @@ import com.avaya.axp.client.sample_app_messaging.util.ADDRESS
 import com.avaya.axp.client.sample_app_messaging.util.AXP_APP_KEY
 import com.avaya.axp.client.sample_app_messaging.util.AXP_BASE_URL
 import com.avaya.axp.client.sample_app_messaging.util.AXP_INTEGRATION_ID
-import com.avaya.axp.client.sample_app_messaging.util.CONTEXT_PARAMETER_KEY
-import com.avaya.axp.client.sample_app_messaging.util.CONTEXT_PARAMETER_VALUE
+import com.avaya.axp.client.sample_app_messaging.util.CONTEXT_PARAMETERS
 import com.avaya.axp.client.sample_app_messaging.util.LATITUDE
 import com.avaya.axp.client.sample_app_messaging.util.LONGITUDE
 import com.avaya.axp.client.sample_app_messaging.util.USER_NAME
@@ -41,18 +40,22 @@ class MessagingSdkViewModel : ViewModel() {
     private val logTag = "MessagingSdkViewModel"
 
     fun configureSdk() {
-        messagingSdkConfig = AxpClientSdk.sdkConfig ?: AxpClientSdk.configureSdk(
-            host = AXP_BASE_URL,
-            appKey = AXP_APP_KEY,
-            integrationId = AXP_INTEGRATION_ID,
-            jwtProvider = MyJwtProvider(),
-            configMap = mapOf(
-                SdkConfigKey.HTTP_LOG_LEVEL to HttpLogLevel.BASIC,
-                SdkConfigKey.DISPLAY_NAME to USER_NAME
+        try{
+            messagingSdkConfig = AxpClientSdk.sdkConfig ?: AxpClientSdk.configureSdk(
+                host = AXP_BASE_URL,
+                appKey = AXP_APP_KEY,
+                integrationId = AXP_INTEGRATION_ID,
+                jwtProvider = MyJwtProvider(),
+                configMap = mapOf(
+                    SdkConfigKey.HTTP_LOG_LEVEL to HttpLogLevel.BASIC,
+                    SdkConfigKey.DISPLAY_NAME to USER_NAME
+                )
             )
-        )
-        setUiFlags()
-        setUiEventHandler()
+            setUiFlags()
+            setUiEventHandler()
+        }catch (e:Exception){
+            Log.d(logTag, e.message.toString())
+        }
     }
 
     fun initSession(onComplete: (String?) -> Unit) {
@@ -81,7 +84,7 @@ class MessagingSdkViewModel : ViewModel() {
             }
             session = conversation.session
             conversation.contextParameters =
-                mapOf(CONTEXT_PARAMETER_KEY to CONTEXT_PARAMETER_VALUE)
+                CONTEXT_PARAMETERS
             initStatus = true
             conversationHandler =
                 AvayaMessagingUiSDK.getConversationHandler(conversation)
