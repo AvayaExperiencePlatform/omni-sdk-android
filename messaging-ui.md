@@ -71,18 +71,24 @@ The Avaya Messaging UI SDK's customization capabilities empower developers to cr
 To incorporate the Messaging UI SDK into your application, follow these simple steps:
 
 1. **Download the SDK:**
-   Add the SDK to any folder within your application. Obtain the absolute path of the `messaging_android_ui_sdk.aar` file.
+   Add the SDK to any folder within your application. Obtain the path of the `messaging-ui.aar` file.
 
-2. **Update `build.gradle`:**
-   Open your app-level `build.gradle` file.
-   Add the following dependency to include the Messaging UI SDK:
-
-   ```groovy
-   dependencies {
-       implementation files('{path}/messaging_android_ui_sdk.aar')
-   }
-   ```
-Replace `{path}` with the absolute path of the `messaging_android_ui_sdk.aar` file. And sync the project.
+   2. **Update `build.gradle`:**
+      Open your app-level `build.gradle` file.
+      Add the following dependency to include the Messaging UI SDK:
+      - Groovy
+      ```groovy
+      dependencies {
+          implementation files('{path}/messaging-ui.aar')
+      }
+      ```
+      - kotlinDSL
+      ```kotlinDSL
+      dependencies {
+          implementation (files("{path}/messaging-ui.aar"))
+      }
+      ```
+Replace `{path}` with the absolute path of the `messaging-ui.aar` file. And sync the project.
 
 ## Getting Started with UI Customization and flags
 
