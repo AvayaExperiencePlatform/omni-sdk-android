@@ -46,9 +46,9 @@ android {
 }
 
 dependencies {
-    implementation(files("../omni-sdk/core.jar",
-        "../omni-sdk/messaging.jar",
-        "../omni-sdk/messaging-ui-release.aar"))
+    implementation(files("../omni-sdk/core-0.0.1.jar",
+        "../omni-sdk/messaging-0.0.1.jar",
+        "../omni-sdk/messaging-ui-0.0.1.aar"))
 
     constraints {
         implementation("com.google.code.gson:gson:2.10.1")
