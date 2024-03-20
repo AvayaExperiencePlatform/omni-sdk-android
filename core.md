@@ -3,7 +3,6 @@
 
 The AXP Core module provides the basic functionality to configure the SDK and retrieve the default conversation of the user.
 
-
 ## Installation
 
 Add this core dependency to your `build.gradle` file:

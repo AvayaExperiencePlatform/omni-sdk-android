@@ -1,6 +1,6 @@
 # AXP-Messaging
 
-The AXP Messaging Sdk enables asynchronous communication, allowing end users to resume conversation threads at any time and view all previous messages exchanged as part of the conversation. This is unlike a session-based chat, where the chat is closed after the participants disconnect the dialog.
+The AXP Messaging Sdk enables asynchronous communication, allowing end users to resume conversation threads at any time and view all previous messages exchanged as part of the conversation. This is unlike a session-based chat, where the chat is closed after the participants disconnect the dialog. This module is dependent on the Core module.
 
 This document will guide you through the installation and usage of the AXP Messaging Sdk. Let's get started!
 
