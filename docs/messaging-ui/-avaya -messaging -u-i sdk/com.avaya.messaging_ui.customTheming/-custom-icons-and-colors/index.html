@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>CustomIconsAndColors</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            Avaya Messaging UI sdk
+                    </a>
+            </div>
+            <div class="library-version">
+0.1            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":messaging-ui:dokkaHtml/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="Avaya Messaging UI sdk::com.avaya.messaging_ui.customTheming/CustomIconsAndColors///PointingToDeclaration//-383249105">
+  <div class="breadcrumbs"><a href="../../../index.html">Avaya Messaging UI sdk</a><span class="delimiter">/</span><a href="../index.html">com.avaya.messaging_ui.customTheming</a><span class="delimiter">/</span><span class="current">CustomIconsAndColors</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Custom</span><wbr></wbr><span>Icons</span><wbr></wbr><span>And</span><wbr></wbr><span><span>Colors</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-ui:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">CustomIconsAndColors</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>sendingMessageProgressIndicator<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>linearProgressIndicator<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>progressIndicatorOnButton<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>sendMessageIcon<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>attachFileTrailingIcon<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>selectImageIcon<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>selectFileIcon<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>downloadIcon<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>iconOnButton<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/DrawableRes///PointingToDeclaration/"><span class="token annotation builtin">DrawableRes</span></span> </span><span class="token keyword">val </span>botIcon<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/DrawableRes///PointingToDeclaration/"><span class="token annotation builtin">DrawableRes</span></span> </span><span class="token keyword">val </span>agentIcon<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/DrawableRes///PointingToDeclaration/"><span class="token annotation builtin">DrawableRes</span></span> </span><span class="token keyword">val </span>businessIcon<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><p class="paragraph">This class is used to set custom colors for the messaging window icons. null values will be replaced with the default colors from app theme</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-271658026%2FConstructors%2F-383249105" anchor-label="CustomIconsAndColors" id="-271658026%2FConstructors%2F-383249105" data-filterable-set=":messaging-ui:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":messaging-ui:dokkaHtml/release" data-filterable-set=":messaging-ui:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-custom-icons-and-colors.html"><span>Custom</span><wbr></wbr><span>Icons</span><wbr></wbr><span>And</span><wbr></wbr><span><span>Colors</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-271658026%2FConstructors%2F-383249105"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-ui:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sendingMessageProgressIndicator<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">linearProgressIndicator<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">progressIndicatorOnButton<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">sendMessageIcon<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">attachFileTrailingIcon<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">selectImageIcon<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">selectFileIcon<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">downloadIcon<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">iconOnButton<span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/DrawableRes///PointingToDeclaration/"><span class="token annotation builtin">DrawableRes</span></span> </span>botIcon<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/DrawableRes///PointingToDeclaration/"><span class="token annotation builtin">DrawableRes</span></span> </span>agentIcon<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/DrawableRes///PointingToDeclaration/"><span class="token annotation builtin">DrawableRes</span></span> </span>businessIcon<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-738255458%2FProperties%2F-383249105" anchor-label="agentIcon" id="-738255458%2FProperties%2F-383249105" data-filterable-set=":messaging-ui:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":messaging-ui:dokkaHtml/release" data-filterable-set=":messaging-ui:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="agent-icon.html"><span>agent</span><wbr></wbr><span><span>Icon</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-738255458%2FProperties%2F-383249105"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-ui:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="agent-icon.html">agentIcon</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">Icon representing the agent</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1581308648%2FProperties%2F-383249105" anchor-label="attachFileTrailingIcon" id="1581308648%2FProperties%2F-383249105" data-filterable-set=":messaging-ui:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":messaging-ui:dokkaHtml/release" data-filterable-set=":messaging-ui:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="attach-file-trailing-icon.html"><span>attach</span><wbr></wbr><span>File</span><wbr></wbr><span>Trailing</span><wbr></wbr><span><span>Icon</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1581308648%2FProperties%2F-383249105"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-ui:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="attach-file-trailing-icon.html">attachFileTrailingIcon</a><span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">color for attach file button icon on message text field</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-846236196%2FProperties%2F-383249105" anchor-label="botIcon" id="-846236196%2FProperties%2F-383249105" data-filterable-set=":messaging-ui:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":messaging-ui:dokkaHtml/release" data-filterable-set=":messaging-ui:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bot-icon.html"><span>bot</span><wbr></wbr><span><span>Icon</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-846236196%2FProperties%2F-383249105"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-ui:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="bot-icon.html">botIcon</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">Icon representing the bot or system messages</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1873152027%2FProperties%2F-383249105" anchor-label="businessIcon" id="-1873152027%2FProperties%2F-383249105" data-filterable-set=":messaging-ui:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":messaging-ui:dokkaHtml/release" data-filterable-set=":messaging-ui:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="business-icon.html"><span>business</span><wbr></wbr><span><span>Icon</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1873152027%2FProperties%2F-383249105"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-ui:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="business-icon.html">businessIcon</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">Icon representing the business</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1629027299%2FProperties%2F-383249105" anchor-label="downloadIcon" id="-1629027299%2FProperties%2F-383249105" data-filterable-set=":messaging-ui:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":messaging-ui:dokkaHtml/release" data-filterable-set=":messaging-ui:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="download-icon.html"><span>download</span><wbr></wbr><span><span>Icon</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1629027299%2FProperties%2F-383249105"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-ui:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="download-icon.html">downloadIcon</a><span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">color for download icon used for downloading media</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-10159148%2FProperties%2F-383249105" anchor-label="iconOnButton" id="-10159148%2FProperties%2F-383249105" data-filterable-set=":messaging-ui:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":messaging-ui:dokkaHtml/release" data-filterable-set=":messaging-ui:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="icon-on-button.html"><span>icon</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-10159148%2FProperties%2F-383249105"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-ui:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="icon-on-button.html">iconOnButton</a><span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">color for any icons on solid button like location icon on send location button</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1084354657%2FProperties%2F-383249105" anchor-label="linearProgressIndicator" id="-1084354657%2FProperties%2F-383249105" data-filterable-set=":messaging-ui:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":messaging-ui:dokkaHtml/release" data-filterable-set=":messaging-ui:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="linear-progress-indicator.html"><span>linear</span><wbr></wbr><span>Progress</span><wbr></wbr><span><span>Indicator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1084354657%2FProperties%2F-383249105"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-ui:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="linear-progress-indicator.html">linearProgressIndicator</a><span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">color for linear progress indicator when fetching older messages</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="794936297%2FProperties%2F-383249105" anchor-label="progressIndicatorOnButton" id="794936297%2FProperties%2F-383249105" data-filterable-set=":messaging-ui:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":messaging-ui:dokkaHtml/release" data-filterable-set=":messaging-ui:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="progress-indicator-on-button.html"><span>progress</span><wbr></wbr><span>Indicator</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="794936297%2FProperties%2F-383249105"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-ui:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="progress-indicator-on-button.html">progressIndicatorOnButton</a><span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">color for circular progress indicator on filed button while fetching location details</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1560038963%2FProperties%2F-383249105" anchor-label="selectFileIcon" id="-1560038963%2FProperties%2F-383249105" data-filterable-set=":messaging-ui:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":messaging-ui:dokkaHtml/release" data-filterable-set=":messaging-ui:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="select-file-icon.html"><span>select</span><wbr></wbr><span>File</span><wbr></wbr><span><span>Icon</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1560038963%2FProperties%2F-383249105"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-ui:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="select-file-icon.html">selectFileIcon</a><span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">color for file icon used for picking file from gallery</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-531208732%2FProperties%2F-383249105" anchor-label="selectImageIcon" id="-531208732%2FProperties%2F-383249105" data-filterable-set=":messaging-ui:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":messaging-ui:dokkaHtml/release" data-filterable-set=":messaging-ui:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="select-image-icon.html"><span>select</span><wbr></wbr><span>Image</span><wbr></wbr><span><span>Icon</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-531208732%2FProperties%2F-383249105"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-ui:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="select-image-icon.html">selectImageIcon</a><span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">color for image icon used for picking image from gallery</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1192090937%2FProperties%2F-383249105" anchor-label="sendingMessageProgressIndicator" id="-1192090937%2FProperties%2F-383249105" data-filterable-set=":messaging-ui:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":messaging-ui:dokkaHtml/release" data-filterable-set=":messaging-ui:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sending-message-progress-indicator.html"><span>sending</span><wbr></wbr><span>Message</span><wbr></wbr><span>Progress</span><wbr></wbr><span><span>Indicator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1192090937%2FProperties%2F-383249105"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-ui:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="sending-message-progress-indicator.html">sendingMessageProgressIndicator</a><span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">color for circular progress indicator when sending message</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2055844796%2FProperties%2F-383249105" anchor-label="sendMessageIcon" id="-2055844796%2FProperties%2F-383249105" data-filterable-set=":messaging-ui:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":messaging-ui:dokkaHtml/release" data-filterable-set=":messaging-ui:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="send-message-icon.html"><span>send</span><wbr></wbr><span>Message</span><wbr></wbr><span><span>Icon</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2055844796%2FProperties%2F-383249105"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-ui:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="send-message-icon.html">sendMessageIcon</a><span class="token operator">: </span><span data-unresolved-link="androidx.compose.ui.graphics/Color///PointingToDeclaration/">Color</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">color for send message button icon</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
