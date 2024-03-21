@@ -1,4 +1,4 @@
-# Avaya Experience Platform 
+# Avaya Experience Platform™ Android Omni SDK
 
 ### :warning: Disclaimer
 
