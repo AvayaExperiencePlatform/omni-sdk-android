@@ -1,21 +1,21 @@
 ## Introduction
 
-This guide serves as an example for implementing the core, messaging, and messaging UI SDKs with minimum requirements. It demonstrates how to seamlessly integrate a messaging interface into your application, utilizing these three libraries.
+This guide serves as an example for implementing the core, messaging, and messaging UI SDKs with minimum requirements. It demonstrates how to integrate a messaging interface into your application seamlessly, utilizing these three libraries.
 
 ## Integration Steps
 
-To seamlessly incorporate the Messaging UI SDK into your application, follow these straightforward integration steps:
+To incorporate the Messaging UI SDK into your application seamlessly, follow these straightforward integration steps:
 
 1. **Add SDK Files to Your Project:**
-    - include the `.jar` and `.aar` files in your project. Here we have included it in omni-sdk folder.
+    - Include the `.jar` and `.aar` files in your project. We have included it in the omni-sdk folder.
 
 2. **Implement Dependencies:**
     - In your app-level `build.gradle` file, add the following dependencies:
 
 ```groovy
    dependencies {
-       implementation files('{path}/core.aar')
-       implementation files('{path}/messaging.aar')
+       implementation files('{path}/core.jar')
+       implementation files('{path}/messaging.jar')
        implementation files('{path}/messaging-ui.aar')
    }
 ```
@@ -23,8 +23,8 @@ To seamlessly incorporate the Messaging UI SDK into your application, follow the
 kotlinDSL
 ```kotlinDSL
    dependencies {
-       implementation (files("{path}/core.aar"))
-       implementation (files("{path}/messaging.aar"))
+       implementation (files("{path}/core.jar"))
+       implementation (files("{path}/messaging.jar"))
        implementation (files("{path}/messaging-ui.aar"))
    }
 ```
@@ -34,7 +34,8 @@ Replace {path} with the absolute path to the .aar files.
 
 ### Include Additional Dependencies:
 
-Integrate the following dependencies in app which will be utilized by sdks:
+Integrate the following dependencies into the app, which will be utilized by the SDKs:
+
 - Groovy
 ```groovy
 dependencies {
