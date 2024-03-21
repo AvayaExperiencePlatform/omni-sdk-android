@@ -12,7 +12,7 @@ If you're using Groovy, add:
 
 ```groovy
 dependencies {
-    implementation 'com.avaya.sdk:messaging:${avayaSdkVersion}'
+    implementation files('${path}/messaging.jar')
 }
 ```
 
@@ -20,11 +20,11 @@ If you're using Kotlin DSL, add:
 
 ```kotlin
 dependencies {
-    implementation("com.avaya.sdk:messaging:${avayaSdkVersion}")
+    implementation(files("${path}/messaging.jar"))
 }
 ```
 
-In both cases, replace ${avayaSdkVersion} with the latest version of the AXP SDK. You can find the latest version on the [AXP SDK releases page]().
+In both cases, replace ${path} with the original path of jar. You can find the latest version on the [AXP SDK releases page](./omni-sdk/messaging-0.0.1.jar).
 
 After adding these lines, run a build to download and integrate the AXP Messaging sdk into your project.
 

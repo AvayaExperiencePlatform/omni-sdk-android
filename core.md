@@ -8,20 +8,21 @@ The AXP Core module provides the basic functionality to configure the SDK and re
 Add this core dependency to your `build.gradle` file:
 
 ```groovy
-// For Groovy
 dependencies {
-    implementation 'com.avaya.sdk:core:${avayaSdkVersion}'
+    implementation files('${path}/core.jar')
 }
 ```
 
-or
+If you're using Kotlin DSL, add:
 
 ```kotlin
-// For Kotlin DSL
 dependencies {
-    implementation("com.avaya.sdk:core:${avayaSdkVersion}")
+    implementation(files("${path}/core.jar"))
 }
 ```
+
+In both cases, replace ${path} with the original path of jar. You can find the latest version on the [AXP SDK releases page](./omni-sdk/core-0.0.1.jar).
+
 
 Replace `${avayaSdkVersion}` with the latest version of the AXP SDK.
 
