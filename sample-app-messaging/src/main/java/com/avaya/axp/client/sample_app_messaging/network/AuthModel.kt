@@ -5,12 +5,12 @@ import com.google.gson.annotations.SerializedName
 
 data class JwtTokenRequest(
     @SerializedName("userId") val userId: String? = null,
-    @SerializedName("verifiedCustomer") val verifiedCustomer: Boolean? = null,
-    @SerializedName("customerName") val customerName: String? = null,
-    @SerializedName("customerIdentifiers") val customerIdentifiers: CustomerIdentifiers? = CustomerIdentifiers()
+    @SerializedName("verified") val verified: Boolean? = null,
+    @SerializedName("userName") val userName: String? = null,
+    @SerializedName("userIdentifiers") val userIdentifiers: UserIdentifiers? = UserIdentifiers()
 )
 
-data class CustomerIdentifiers(
+data class UserIdentifiers(
     @SerializedName("emailAddresses") val emailAddresses: List<String>? = null,
     @SerializedName("phoneNumbers") val phoneNumbers: List<String>? = null
 )
@@ -20,6 +20,12 @@ data class JwtResponse(
     val jwt: String,
     @SerializedName("axpIntegrationId")
     val axpIntegrationId: String,
+    @SerializedName("configId")
+    val configId: String? = null,
     @SerializedName("axpHostName")
-    val axpHostName: String
+    val axpHostName: String,
+    @SerializedName("fcmConnectorBaseUrl")
+    val fcmConnectorBaseUrl: String? = null,
+    @SerializedName("appKey")
+    val appKey: String? = null,
 )
