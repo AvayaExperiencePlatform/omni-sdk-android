@@ -1,7 +1,12 @@
 plugins {
-    id("com.android.application") version "8.3.0"
-    id("org.jetbrains.kotlin.android") version "1.9.22"
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.ksp)
+    `maven-publish`
 }
+
+val pomVersion = property("pom.version") as String
 
 android {
     namespace = "com.avaya.axp.client.sample_app_messaging"
@@ -23,17 +28,23 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.9"
@@ -45,38 +56,73 @@ android {
     }
 }
 
-dependencies {
-    implementation(files("../omni-sdk/core-0.0.1.jar",
-        "../omni-sdk/messaging-0.0.1.jar",
-        "../omni-sdk/messaging-ui-0.0.1.aar"))
-
-    constraints {
-        implementation("com.google.code.gson:gson:2.10.1")
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            groupId = providers.gradleProperty("pom.group.id").get()
+            artifactId = "sample-app-messaging"
+            version = pomVersion
+            artifact("build/outputs/apk/release/${artifactId}-release-unsigned.apk")
+            pom {
+                name = "AXP Client SDK - Sample App Messaging"
+                description = "AXP clients support for sample app messaging"
+                // TODO: before really publishing, will need to fill in a license and URL here
+            }
+        }
     }
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.work:work-runtime-ktx:2.9.0")
 
-    // Icons extended
-    implementation("io.coil-kt:coil-compose:2.2.2")
-    implementation("io.coil-kt:coil-gif:2.4.0")
+    repositories {
+        maven {
+            val releasesRepoUrl = "https://nexus.forge.avaya.com/repository/metam-maven-release/"
+            val snapshotsRepoUrl = "https://nexus.forge.avaya.com/repository/metam-maven-snapshot/"
+            url = uri(
+                if (pomVersion.toString()
+                        .endsWith("SNAPSHOT")
+                ) snapshotsRepoUrl else releasesRepoUrl
+            )
+            credentials {
+                username = if (hasProperty("nexusUsername")) property("nexusUsername") as String else ""
+                password = if (hasProperty("nexusPassword")) property("nexusPassword") as String else ""
+            }
+        }
+    }
+}
 
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("com.squareup.moshi:moshi:1.15.1")
-    implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
-    implementation("org.slf4j:slf4j-api:2.0.9")
-    implementation("androidx.compose.runtime:runtime-livedata:1.6.3")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
-    implementation("androidx.activity:activity-compose:1.8.2")
-    implementation(platform("androidx.compose:compose-bom:2024.02.02"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("androidx.navigation:navigation-compose:2.7.7")
-    implementation("androidx.compose.material:material-icons-extended")
-    implementation("androidx.core:core-ktx:1.12.0")
+dependencies {
+    implementation(project(":core"))
+    implementation(project(":messaging"))
+    implementation(project(":messaging-ui"))
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
+    ksp(libs.moshi.codegen)
+    implementation(libs.okhttp.logging)
+
+    implementation(libs.logback.android)
+
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.compose.material.iconsext)
+    implementation(libs.okhttp.logging)
+
+    implementation(libs.firebase.common.ktx)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.messaging)
+    implementation(libs.androidx.work)
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
 }

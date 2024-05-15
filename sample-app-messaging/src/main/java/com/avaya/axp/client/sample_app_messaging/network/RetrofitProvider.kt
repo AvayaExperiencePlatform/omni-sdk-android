@@ -1,26 +1,23 @@
 package com.avaya.axp.client.sample_app_messaging.network
 
-import com.avaya.axp.client.sample_app_messaging.util.AUTH_BASE_URL
-import com.google.gson.GsonBuilder
+import com.avaya.axp.client.sample_app_messaging.util.NOTIFICATION_BASE_URL
+import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
+fun provideNotificationService(): NotificationRegistrationService {
+    val moshi = Moshi.Builder().build()
 
-fun provideAuthService(): AuthenticationService? {
-    return try {
-        Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
-            .baseUrl(AUTH_BASE_URL)
-            .client(
-                OkHttpClient.Builder()
-                    .readTimeout(15L, TimeUnit.SECONDS)
-                    .connectTimeout(15L, TimeUnit.SECONDS).build()
-            )
-            .build()
-            .create(AuthenticationService::class.java)
-    } catch (e: Exception) {
-        null
-    }
+    return Retrofit.Builder()
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .baseUrl(NOTIFICATION_BASE_URL)
+        .client(
+            OkHttpClient.Builder()
+                .readTimeout(15L, TimeUnit.SECONDS)
+                .connectTimeout(15L, TimeUnit.SECONDS).build()
+        )
+        .build()
+        .create(NotificationRegistrationService::class.java)
 }

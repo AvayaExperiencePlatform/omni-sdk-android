@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Calling Sample App</string>
+    <string name="continue_label">Continue</string>
+    <string name="cancel">Cancel</string>
+    <string name="unknown">Unknown</string>
+    <string name="failed_to_start_call">Failed to start call: %1$s</string>
+    <string name="call">Call</string>
+    <string name="end_call">End call</string>
+    <string name="call_ended">Call ended</string>
+    <string name="connecting">Connecting…</string>
+    <string name="connected">Connected</string>
+    <string name="show_keypad">Show Keypad</string>
+    <string name="mic_on">Mic on</string>
+    <string name="mic_off">Mic off</string>
+    <string name="missing_mic_permission">Missing mic permission</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="speaker">Speaker</string>
+    <string name="streaming">Streaming</string>
+    <string name="headset">Headset</string>
+    <string name="phone">Phone</string>
+    <string name="permissions_required">Permissions Required</string>
+    <string name="mic_permission_rationale">In order to speak in a call we need mic permission. Please press continue and grant the permission in the next dialog.</string>
+    <string name="permissions_needed">Permissions are needed to start a call</string>
+    <string name="save">Save</string>
+    <string name="verified_customer">Verified Customer</string>
+    <string name="user_name">User Name</string>
+    <string name="user_id">User ID</string>
+    <string name="settings">Settings</string>
+    <string name="server_url">Server URL</string>
+    <string name="sdk_not_configured">The SDK must be configured before making a call.</string>
+    <string name="loading">Loading…</string>
+</resources>

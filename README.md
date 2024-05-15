@@ -2,22 +2,36 @@
 
 ### :warning: Disclaimer
 
-    Installing, downloading, copying or using this SDK is subject to terms and conditions available in the LICENSE file
+    Installing, downloading, copying or using this SDK is subject to terms and
+    conditions available in the LICENSE file.
 
 ## Key Resources
 - [AXP Core](./core.md)
 - [AXP Messaging](./messaging.md)
 - [Messaging-UI](./messaging-ui.md)
+- [AXP Calling](./calling.md)
 
-## Usage
+## Prerequisites
 
-Before you can start using the Core & Messaging SDK, please ensure that you have completed the following setup steps:
+To use this SDK, you need an account registered with the Avaya Experience
+Platform™, and have that account provisioned to enable use of the client APIs.
 
-### Provisioning Requirements
+Once you have an account, it must be provisioned for the following two items:
 
-First, ensure that the messaging integration provisioning requirements are met. This involves providing the `integrationId`, a valid JWT Token Provider, and an Application Key `appkey` during the configuration of sdk. 
+1. **Integration ID**
 
-For detailed instructions on how to provision the messaging integration, obtain the `integrationId` and `appkey`, and generate a valid JWT Token, please refer to [this guide](https://developers.avayacloud.com/avaya-experience-platform/docs/overview#provisioning-an-integration).
+   To create an integration, follow the instructions in [Creating an Omni SDK
+   Integration]
+   (https://documentation.avaya.com/bundle/ExperiencePlatform_Administering_10/page/Creating_an_Omni_SDK_integration.html).
+   The two services you can enable there (**Messaging** and **WebRTC Voice**)
+   each correspond to a client SDK module, and you must enable the services for
+   the modules that you will use.
+
+2. **Application Key**
+
+   To enable remote access to the AXP APIs, you need to get an application key
+   as described in [How to Authenticate with Avaya Experience Platform™ APIs]
+   (https://developers.avayacloud.com/avaya-experience-platform/docs/how-to-authenticate-with-axp-apis).
 
 ## License
 
