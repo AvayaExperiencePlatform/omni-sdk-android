@@ -15,6 +15,58 @@ the **WebRTC Voice** service enabled. Follow the instructions in
 to set up an integration with voice support and use the integration ID for
 configuring the SDK as described in the documentation for the Core module.
 
+## Installation
+
+The AXP Calling module is distributed as a Maven artifact on GitHub.
+
+### Add Repository
+
+To access the AXP SDK repository, add the following to your `build.gradle` or
+`settings.gradle` file:
+
+```groovy
+// For Groovy
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+    }
+}
+```
+
+or if using the Kotlin DSL, `build.gradle.kts` or `settings.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+    }
+}
+```
+
+### Include Package
+
+To include the package in your project, add the following to your `build.gradle`
+file:
+
+```groovy
+// For Groovy
+dependencies {
+    implementation 'com.avaya.sdk:calling:${avayaSdkVersion}'
+}
+```
+
+or Kotlin `build.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+dependencies {
+    implementation("com.avaya.sdk:calling:${avayaSdkVersion}")
+}
+```
+
+Replace `${avayaSdkVersion}` with the latest version of the AXP SDK.
+
 ## How to Start a Call
 
 1. **Configure the SDK**

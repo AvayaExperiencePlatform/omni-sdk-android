@@ -19,8 +19,37 @@ configuring the SDK as described in the documentation for the Core module.
 
 ## Installation
 
-The AXP Messaging module is distributed as a Maven artifact. To include it in your project, add the
-following to your `build.gradle` file:
+The AXP Messaging module is distributed as a Maven artifact on GitHub.
+
+### Add Repository
+
+To access the AXP SDK repository, add the following to your `build.gradle` or
+`settings.gradle` file:
+
+```groovy
+// For Groovy
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+    }
+}
+```
+
+or if using the Kotlin DSL, `build.gradle.kts` or `settings.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+    }
+}
+```
+
+### Include Package
+
+To include the package in your project, add the following to your `build.gradle`
+file:
 
 ```groovy
 // For Groovy

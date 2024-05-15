@@ -63,29 +63,57 @@ The Avaya Messaging UI SDK's customization capabilities empower developers to cr
 
 ### Using the Messaging UI SDK in Your Application
 
-## Integration Steps
+## Installation
 
-To incorporate the Messaging UI SDK into your application, follow these simple steps:
+The AXP Messaging UI library is distributed as a Maven artifact on GitHub.
 
-1. **Download the SDK:**
-   Add the SDK to any folder within your application. Obtain the path of the `messaging-ui.aar` file.
+### Add Repository
 
-2. **Update `build.gradle`:**
-      Open your app-level `build.gradle` file.
-      Add the following dependency to include the Messaging UI SDK: 
-      - Groovy
-      ```groovy
-    dependencies {
-        implementation files('{path}/messaging-ui.aar')
+To access the AXP SDK repository, add the following to your `build.gradle` or
+`settings.gradle` file:
+
+```groovy
+// For Groovy
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
     }
-    ```
-    - kotlinDSL
-    ```kotlinDSL
-    dependencies {
-        implementation (files("{path}/messaging-ui.aar"))
+}
+```
+
+or if using the Kotlin DSL, `build.gradle.kts` or `settings.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
     }
-    ```
-Replace `{path}` with the absolute path of the `messaging-ui.aar` file. And sync the project.
+}
+```
+
+### Include Package
+
+To include the package in your project, add the following to your `build.gradle`
+file:
+
+```groovy
+// For Groovy
+dependencies {
+    implementation 'com.avaya.sdk:messaging-ui:${avayaSdkVersion}'
+}
+```
+
+or Kotlin `build.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+dependencies {
+    implementation("com.avaya.sdk:messaging-ui:${avayaSdkVersion}")
+}
+```
+
+Replace `${avayaSdkVersion}` with the latest version of the AXP SDK.
 
 ## Getting Started with UI Customization and flags
 
