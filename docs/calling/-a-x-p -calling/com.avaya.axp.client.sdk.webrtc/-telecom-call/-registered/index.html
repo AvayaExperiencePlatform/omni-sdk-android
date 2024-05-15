@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Registered</title>
+    <link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../../index.html">
+                            AXP Calling
+                    </a>
+            </div>
+            <div class="library-version">
+0.1            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":webrtc:dokkaHtml/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="AXP Calling::com.avaya.axp.client.sdk.webrtc/TelecomCall.Registered///PointingToDeclaration//574193791">
+  <div class="breadcrumbs"><a href="../../../../index.html">AXP Calling</a><span class="delimiter">/</span><a href="../../index.html">com.avaya.axp.client.sdk.webrtc</a><span class="delimiter">/</span><a href="../index.html">TelecomCall</a><span class="delimiter">/</span><span class="current">Registered</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Registered</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":webrtc:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">Registered</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>id<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/os/ParcelUuid.html">ParcelUuid</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>callAttributes<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/core/telecom/CallAttributesCompat.html">CallAttributesCompat</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isActive<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isOnHold<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isMuted<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>availableCallEndpoints<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/androidx/core/telecom/CallEndpointCompat.html">CallEndpointCompat</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">actionSource<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.channels/Channel///PointingToDeclaration/">Channel</span><span class="token operator">&lt;</span><a href="../../-telecom-call-action/index.html">TelecomCallAction</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>currentCallEndpoint<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/core/telecom/CallEndpointCompat.html">CallEndpointCompat</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>error<span class="token operator">: </span><span data-unresolved-link="com.avaya.axp.client.sdk.core/AxpSdkError///PointingToDeclaration/">AxpSdkError</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>call<span class="token operator">: </span><a href="../../-call/index.html">Call</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../index.html">TelecomCall</a></div><p class="paragraph">Represents a registered call with the telecom stack with the values provided by the Telecom SDK.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-695937015%2FConstructors%2F574193791" anchor-label="Registered" id="-695937015%2FConstructors%2F574193791" data-filterable-set=":webrtc:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":webrtc:dokkaHtml/release" data-filterable-set=":webrtc:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-registered.html"><span><span>Registered</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-695937015%2FConstructors%2F574193791"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":webrtc:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">id<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/os/ParcelUuid.html">ParcelUuid</a><span class="token punctuation">, </span></span><span class="parameter ">callAttributes<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/core/telecom/CallAttributesCompat.html">CallAttributesCompat</a><span class="token punctuation">, </span></span><span class="parameter ">isActive<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">isOnHold<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">isMuted<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">availableCallEndpoints<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/androidx/core/telecom/CallEndpointCompat.html">CallEndpointCompat</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">actionSource<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.channels/Channel///PointingToDeclaration/">Channel</span><span class="token operator">&lt;</span><a href="../../-telecom-call-action/index.html">TelecomCallAction</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">currentCallEndpoint<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/core/telecom/CallEndpointCompat.html">CallEndpointCompat</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">error<span class="token operator">: </span><span data-unresolved-link="com.avaya.axp.client.sdk.core/AxpSdkError///PointingToDeclaration/">AxpSdkError</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">call<span class="token operator">: </span><a href="../../-call/index.html">Call</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1760369689%2FProperties%2F574193791" anchor-label="availableCallEndpoints" id="1760369689%2FProperties%2F574193791" data-filterable-set=":webrtc:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":webrtc:dokkaHtml/release" data-filterable-set=":webrtc:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="available-call-endpoints.html"><span>available</span><wbr></wbr><span>Call</span><wbr></wbr><span><span>Endpoints</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1760369689%2FProperties%2F574193791"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":webrtc:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="available-call-endpoints.html">availableCallEndpoints</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/androidx/core/telecom/CallEndpointCompat.html">CallEndpointCompat</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="653943506%2FProperties%2F574193791" anchor-label="call" id="653943506%2FProperties%2F574193791" data-filterable-set=":webrtc:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":webrtc:dokkaHtml/release" data-filterable-set=":webrtc:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="call.html"><span><span>call</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="653943506%2FProperties%2F574193791"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":webrtc:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="call.html">call</a><span class="token operator">: </span><a href="../../-call/index.html">Call</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1051724539%2FProperties%2F574193791" anchor-label="callAttributes" id="1051724539%2FProperties%2F574193791" data-filterable-set=":webrtc:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":webrtc:dokkaHtml/release" data-filterable-set=":webrtc:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="call-attributes.html"><span>call</span><wbr></wbr><span><span>Attributes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1051724539%2FProperties%2F574193791"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":webrtc:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="call-attributes.html">callAttributes</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/core/telecom/CallAttributesCompat.html">CallAttributesCompat</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1822300926%2FProperties%2F574193791" anchor-label="currentCallEndpoint" id="1822300926%2FProperties%2F574193791" data-filterable-set=":webrtc:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":webrtc:dokkaHtml/release" data-filterable-set=":webrtc:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="current-call-endpoint.html"><span>current</span><wbr></wbr><span>Call</span><wbr></wbr><span><span>Endpoint</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1822300926%2FProperties%2F574193791"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":webrtc:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="current-call-endpoint.html">currentCallEndpoint</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/core/telecom/CallEndpointCompat.html">CallEndpointCompat</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="609529186%2FProperties%2F574193791" anchor-label="error" id="609529186%2FProperties%2F574193791" data-filterable-set=":webrtc:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":webrtc:dokkaHtml/release" data-filterable-set=":webrtc:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="error.html"><span><span>error</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="609529186%2FProperties%2F574193791"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":webrtc:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="error.html">error</a><span class="token operator">: </span><span data-unresolved-link="com.avaya.axp.client.sdk.core/AxpSdkError///PointingToDeclaration/">AxpSdkError</span><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1237499765%2FProperties%2F574193791" anchor-label="id" id="1237499765%2FProperties%2F574193791" data-filterable-set=":webrtc:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":webrtc:dokkaHtml/release" data-filterable-set=":webrtc:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="id.html"><span><span>id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1237499765%2FProperties%2F574193791"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":webrtc:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="id.html">id</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/os/ParcelUuid.html">ParcelUuid</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-335732960%2FProperties%2F574193791" anchor-label="isActive" id="-335732960%2FProperties%2F574193791" data-filterable-set=":webrtc:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":webrtc:dokkaHtml/release" data-filterable-set=":webrtc:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-active.html"><span>is</span><wbr></wbr><span><span>Active</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-335732960%2FProperties%2F574193791"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":webrtc:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-active.html">isActive</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-984657943%2FProperties%2F574193791" anchor-label="isMuted" id="-984657943%2FProperties%2F574193791" data-filterable-set=":webrtc:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":webrtc:dokkaHtml/release" data-filterable-set=":webrtc:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-muted.html"><span>is</span><wbr></wbr><span><span>Muted</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-984657943%2FProperties%2F574193791"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":webrtc:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-muted.html">isMuted</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1682595304%2FProperties%2F574193791" anchor-label="isOnHold" id="1682595304%2FProperties%2F574193791" data-filterable-set=":webrtc:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":webrtc:dokkaHtml/release" data-filterable-set=":webrtc:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-on-hold.html"><span>is</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Hold</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1682595304%2FProperties%2F574193791"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":webrtc:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-on-hold.html">isOnHold</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-379305928%2FFunctions%2F574193791" anchor-label="processAction" id="-379305928%2FFunctions%2F574193791" data-filterable-set=":webrtc:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":webrtc:dokkaHtml/release" data-filterable-set=":webrtc:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="process-action.html"><span>process</span><wbr></wbr><span><span>Action</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-379305928%2FFunctions%2F574193791"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":webrtc:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="process-action.html"><span class="token function">processAction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><a href="../../-telecom-call-action/index.html">TelecomCallAction</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Sends an action to the call session. It will be processed if it's still registered.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
