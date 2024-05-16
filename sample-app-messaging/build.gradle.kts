@@ -53,12 +53,13 @@ android {
 }
 
 dependencies {
-    implementation("com.avaya.axp.client.sdk:core:0.1.0")
-    implementation("com.avaya.axp.client.sdk:messaging:0.1.0")
-    implementation("com.avaya.axp.client.sdk:messaging-ui:0.1.0")
+    implementation("com.avaya.axp.client.sdk:core:0.1.1")
+    implementation("com.avaya.axp.client.sdk:messaging:0.1.1")
+    implementation("com.avaya.axp.client.sdk:messaging-ui:0.1.1")
 
     implementation(group = "androidx.activity", name = "activity-compose", version = "1.9.0")
     implementation(group = "androidx.compose.material", name = "material-icons-extended", version = "1.6.7")
+    implementation(group = "androidx.compose.material3", name = "material3", version = "1.2.1")
     implementation(group = "androidx.compose.ui", name = "ui-graphics")
     implementation(group = "androidx.compose.ui", name = "ui-tooling-preview")
     implementation(group = "androidx.compose.ui", name = "ui")
@@ -67,12 +68,12 @@ dependencies {
     implementation(group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version = "2.7.0")
     implementation(group = "androidx.navigation", name = "navigation-compose", version = "2.7.7")
     implementation(group = "androidx.work", name = "work-runtime-ktx", version = "2.9.0")
-    implementation(group = "com.google.android.material", name = "material", version = "1.12.0")
 
     implementation(group = "com.google.firebase", name = "firebase-common-ktx", version = "21.0.0")
     implementation(group = "com.google.firebase", name = "firebase-bom", version = "33.0.0")
     implementation(group = "com.google.firebase", name = "firebase-messaging", version = "24.0.0")
 
+    implementation(group = "com.google.code.gson", name = "gson", version = "2.10.1")
     implementation(group = "com.squareup.moshi", name = "moshi", version = "1.15.1")
     implementation(group = "com.squareup.moshi", name = "moshi-kotlin", version = "1.15.1")
     ksp(group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version = "1.15.1")
