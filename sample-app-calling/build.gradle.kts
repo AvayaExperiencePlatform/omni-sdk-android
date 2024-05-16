@@ -1,12 +1,9 @@
 plugins {
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.kotlin.parcelize)
-    alias(libs.plugins.ksp)
-    `maven-publish`
+    id("com.android.application") version "8.3.2"
+    id("org.jetbrains.kotlin.android") version "1.9.22"
+    id("org.jetbrains.kotlin.plugin.parcelize") version "1.9.22"
+    id("com.google.devtools.ksp") version "1.9.22-1.0.18"
 }
-
-val pomVersion = property("pom.version") as String
 
 android {
     namespace = "com.avaya.axp.client.sample"
@@ -56,74 +53,39 @@ kotlin {
     jvmToolchain(17)
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("release") {
-            groupId = providers.gradleProperty("pom.group.id").get()
-            artifactId = "sample-app-calling"
-            version = pomVersion
-            artifact("build/outputs/apk/release/${artifactId}-release-unsigned.apk")
-            pom {
-                name = "AXP Client SDK - Sample app calling"
-                description = "AXP clients support for sample app calling"
-                // TODO: before really publishing, will need to fill in a license and URL here
-            }
-        }
-    }
-
-    repositories {
-        maven {
-            val releasesRepoUrl = "https://nexus.forge.avaya.com/repository/metam-maven-release/"
-            val snapshotsRepoUrl = "https://nexus.forge.avaya.com/repository/metam-maven-snapshot/"
-            url = uri(
-                if (pomVersion.endsWith("SNAPSHOT")) {
-                    snapshotsRepoUrl
-                } else {
-                    releasesRepoUrl
-                }
-            )
-            credentials {
-                username = if (hasProperty("nexusUsername")) property("nexusUsername") as String else ""
-                password = if (hasProperty("nexusPassword")) property("nexusPassword") as String else ""
-            }
-        }
-    }
-}
-
 dependencies {
-    implementation(project(":core"))
-    implementation(project(":mpaas-calling"))
-    implementation(project(":webrtc"))
+    implementation("com.avaya.axp.client.sdk:core:0.1.1")
+    implementation("com.avaya.axp.client.sdk:mpaas-calling:0.1.1")
+    implementation("com.avaya.axp.client.sdk:calling:0.1.1")
 
-    coreLibraryDesugaring(libs.core.desugaring)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.datastore.preferences)
-    implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.telecom)
+    coreLibraryDesugaring(group = "com.android.tools", name = "desugar_jdk_libs", version = "2.0.4")
+    implementation(group = "androidx.core", name = "core-ktx", version = "1.13.1")
+    implementation(group = "androidx.datastore", name = "datastore-preferences", version = "1.1.1")
+    implementation(group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version = "2.7.0")
+    implementation(group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version = "2.7.0")
+    implementation(group = "androidx.core", name = "core-telecom", version = "1.0.0-alpha03")
 
     // Compose
-    implementation(libs.accompanist.permissions)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.ui)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.androidx.lifecycle.viewModelCompose)
-    implementation(libs.material)   // TODO: this should be removed once theming problem is resolved
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.lifecycle.viewModelCompose)
-    implementation(libs.compose.material.iconsext)
+    implementation(group = "com.google.accompanist", name = "accompanist-permissions", version = "0.34.0")
+    implementation(group = "androidx.activity", name = "activity-compose", version = "1.9.0")
+    implementation(group = "androidx.compose", name = "compose-bom", version = "2024.05.00")
+    implementation(group = "androidx.compose.ui", name = "ui")
+    implementation(group = "androidx.compose.ui", name = "ui-tooling-preview")
+    implementation(group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version = "2.7.0")
+    implementation(group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version = "2.7.0")
+    implementation(group = "com.google.android.material", name = "material", version = "1.12.0")
+    implementation(group = "androidx.compose.material3", name = "material3", version = "1.2.1")
+    implementation(group = "androidx.navigation", name = "navigation-compose", version = "2.7.7")
+    implementation(group = "androidx.compose.material", name = "material-icons-extended", version = "1.6.7")
+    debugImplementation(group = "androidx.compose.ui", name = "ui-test-manifest", version = "1.6.7")
+    debugImplementation(group = "androidx.compose.ui", name = "ui-tooling")
 
-    implementation(libs.moshi)
-    implementation(libs.moshi.kotlin)
-    ksp(libs.moshi.codegen)
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging)
+    implementation(group = "com.squareup.moshi", name = "moshi", version = "1.15.1")
+    implementation(group = "com.squareup.moshi", name = "moshi-kotlin", version = "1.15.1")
+    ksp(group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version = "1.15.1")
+    implementation(group = "com.squareup.okhttp3", name = "okhttp", version = "4.12.0")
+    implementation(group = "com.squareup.okhttp3", name = "logging-interceptor", version = "4.12.0")
 
-    implementation(libs.logback.android)
-    implementation(libs.slf4j)
+    implementation(group = "com.github.tony19", name = "logback-android", version = "3.0.0")
+    implementation(group = "org.slf4j", name = "slf4j-api", version = "2.0.13")
 }
