@@ -65,9 +65,25 @@ The Avaya Messaging UI SDK's customization capabilities empower developers to cr
 
 ## Installation
 
-The AXP Messaging UI library is distributed as a Maven artifact on GitHub.
+The AXP Messaging UI library is distributed via the Maven registry in GitHub
+Packages.
 
-### Add Repository
+### Maven Installation
+
+If you have a GitHub account, you can use it to download the package
+automatically from the registry.
+
+#### Generate a Personal Access Token
+
+To download packages from the GitHub registry, you first need to generate an
+authentication token for your GitHub account.
+
+To generate one, follow the instructions from [Creating a personal access token
+(classic)]
+(https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)
+For the selected scopes, pick "read:packages".
+
+#### Add Repository
 
 To access the AXP SDK repository, add the following to your `build.gradle` or
 `settings.gradle` file:
@@ -77,6 +93,10 @@ To access the AXP SDK repository, add the following to your `build.gradle` or
 repositories {
     maven {
         url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+        credentials {
+            username = "<GITHUB-ACCOUNT>"
+            password = "<GITHUB-TOKEN>"
+        }
     }
 }
 ```
@@ -88,11 +108,18 @@ or if using the Kotlin DSL, `build.gradle.kts` or `settings.gradle.kts` file:
 repositories {
     maven {
         url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+        credentials {
+            username = "<GITHUB-ACCOUNT>"
+            password = "<GITHUB-TOKEN>"
+        }
     }
 }
 ```
 
-### Include Package
+replacing `<GITHUB-ACCOUNT>` with your GitHub user ID and `<GITHUB-TOKEN>` with
+the token generated in the previous step.
+
+#### Include Package
 
 To include the package in your project, add the following to your `build.gradle`
 file:
@@ -100,6 +127,8 @@ file:
 ```groovy
 // For Groovy
 dependencies {
+    implementation 'com.avaya.sdk:core:${avayaSdkVersion}'
+    implementation 'com.avaya.sdk:messaging:${avayaSdkVersion}'
     implementation 'com.avaya.sdk:messaging-ui:${avayaSdkVersion}'
 }
 ```
@@ -109,11 +138,53 @@ or Kotlin `build.gradle.kts` file:
 ```kotlin
 // For Kotlin DSL
 dependencies {
+    implementation("com.avaya.sdk:core:${avayaSdkVersion}")
+    implementation("com.avaya.sdk:messaging:${avayaSdkVersion}")
     implementation("com.avaya.sdk:messaging-ui:${avayaSdkVersion}")
 }
 ```
 
 Replace `${avayaSdkVersion}` with the latest version of the AXP SDK.
+
+### Manual Installation
+
+If you don't have or wish to use a GitHub account, you can download the package
+manually from [its package page]
+(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150733)
+
+You'll also need to download the [Core module]
+(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727)
+and [Messaging Module]
+(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150732)
+that it depends on.
+
+#### Include Package
+
+To include the package in your project, add the following to your `build.gradle`
+file:
+
+```groovy
+// For Groovy
+dependencies {
+    implementation files('${path}/core-${avayaSdkVersion}.aar')
+    implementation files('${path}/messaging-${avayaSdkVersion}.aar')
+    implementation files('${path}/messaging-ui-${avayaSdkVersion}.aar')
+}
+```
+
+or Kotlin `build.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+dependencies {
+    implementation(files("${path}/core-${avayaSdkVersion}.jar.aar"))
+    implementation(files("${path}/messaging-${avayaSdkVersion}.jar.aar"))
+    implementation(files("${path}/messaging-ui-${avayaSdkVersion}.jar.aar"))
+}
+```
+
+Replace `${avayaSdkVersion}` with the version number of the AXP SDK and
+`${path}` with the directory you put the downloaded package files in.
 
 ## Getting Started with UI Customization and flags
 
