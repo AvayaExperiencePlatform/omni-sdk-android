@@ -1,6 +1,6 @@
 # Change Log
 
-## v0.1.0 (May 17, 2024)
+## v0.1.1 (May 17, 2024)
 
 - Introduction of new AXP Omni SDK module: AXP Web RTC.
 - Camera feature added in AXP Messaging UI module.
