@@ -1,48 +1,146 @@
-# AXP-Messaging
+# Module AXP Messaging
 
-The AXP Messaging Sdk enables asynchronous communication, allowing end users to resume conversation threads at any time and view all previous messages exchanged as part of the conversation. This is unlike a session-based chat, where the chat is closed after the participants disconnect the dialog. This module is dependent on the Core module.
+The AXP Messaging module enables text messaging to agents in AXP. It works in
+conjunction with the AXP Core module, which establishes the necessary connections.
 
-This document will guide you through the installation and usage of the AXP Messaging Sdk. Let's get started!
+This enables asynchronous communication, allowing end users to resume
+conversation threads at any time and view all previous messages exchanged as
+part of the conversation. This is unlike a session-based chat, where the chat is
+closed after the participants disconnect the dialog.
 
-### Adding the AXP Messaging SDK to Your Project
+## Prerequisites
 
-The AXP Messaging sdk is distributed as a Maven artifact. To include it in your project, you need to add the following lines to your `build.gradle` file:
+To use the Messaging module, you need an Omni SDK integration provisioned with
+the **Messaging** service enabled. Follow the instructions in
+[Creating an Omni SDK Integration]
+(https://documentation.avaya.com/bundle/ExperiencePlatform_Administering_10/page/Creating_an_Omni_SDK_integration.html)
+to set up an integration with messaging support and use the integration ID for
+configuring the SDK as described in the documentation for the Core module.
 
-If you're using Groovy, add:
+## Installation
+
+The AXP Messaging module is distributed via the Maven registry in GitHub Packages.
+
+### Maven Installation
+
+If you have a GitHub account, you can use it to download the package
+automatically from the registry.
+
+#### Generate a Personal Access Token
+
+To download packages from the GitHub registry, you first need to generate an
+authentication token for your GitHub account.
+
+To generate one, follow the instructions from [Creating a personal access token
+(classic)]
+(https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)
+For the selected scopes, pick "read:packages".
+
+#### Add Repository
+
+To access the AXP SDK repository, add the following to your `build.gradle` or
+`settings.gradle` file:
 
 ```groovy
-dependencies {
-    implementation files('${path}/messaging.jar')
+// For Groovy
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+        credentials {
+            username = "<GITHUB-ACCOUNT>"
+            password = "<GITHUB-TOKEN>"
+        }
+    }
 }
 ```
 
-If you're using Kotlin DSL, add:
+or if using the Kotlin DSL, `build.gradle.kts` or `settings.gradle.kts` file:
 
 ```kotlin
-dependencies {
-    implementation(files("${path}/messaging.jar"))
+// For Kotlin DSL
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+        credentials {
+            username = "<GITHUB-ACCOUNT>"
+            password = "<GITHUB-TOKEN>"
+        }
+    }
 }
 ```
 
-In both cases, replace ${path} with the original path of jar. You can find the latest version on the [AXP SDK releases page](./omni-sdk/messaging-0.0.1.jar).
+replacing `<GITHUB-ACCOUNT>` with your GitHub user ID and `<GITHUB-TOKEN>` with
+the token generated in the previous step.
 
-After adding these lines, run a build to download and integrate the AXP Messaging sdk into your project.
+#### Include Package
 
-With these steps, you should be ready to start using the Messaging SDK in your project.
+To include the package in your project, add the following to your `build.gradle`
+file:
 
-## Functionality
+```groovy
+// For Groovy
+dependencies {
+    implementation 'com.avaya.sdk:core:${avayaSdkVersion}'
+    implementation 'com.avaya.sdk:messaging:${avayaSdkVersion}'
+}
+```
 
-The AXP Messaging sdk offers a range of features, including adding and removing idle timeout listeners, emitting idle timeouts, listening to event states, reconnecting sessions, resetting idle timeouts, and fetching notification data.
+or Kotlin `build.gradle.kts` file:
 
-## Sending a Message with the AXP Messaging sdk
+```kotlin
+// For Kotlin DSL
+dependencies {
+    implementation("com.avaya.sdk:core:${avayaSdkVersion}")
+    implementation("com.avaya.sdk:messaging:${avayaSdkVersion}")
+}
+```
 
-The AXP Messaging sdk allows you to send messages to agents in AXP. This feature is built on the AXP Core sdk, which manages user sessions.
+Replace `${avayaSdkVersion}` with the latest version of the AXP SDK.
 
-### Prerequisites
+### Manual Installation
 
-Before you can send a message, you need a valid `Conversation`. You can obtain this by calling `AxpClientSdk.getDefaultConversation()` from the AXP Core module.
+If you don't have or wish to use a GitHub account, you can download the package
+manually from [its package page]
+(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150732)
 
-Here's an example of getting default conversation:
+You'll also need to download the [Core module]
+(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727)
+that it depends on.
+
+#### Include Package
+
+To include the package in your project, add the following to your `build.gradle`
+file:
+
+```groovy
+// For Groovy
+dependencies {
+    implementation files('${path}/core-${avayaSdkVersion}.aar')
+    implementation files('${path}/messaging-${avayaSdkVersion}.aar')
+}
+```
+
+or Kotlin `build.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+dependencies {
+    implementation(files("${path}/core-${avayaSdkVersion}.jar.aar"))
+    implementation(files("${path}/messaging-${avayaSdkVersion}.jar.aar"))
+}
+```
+
+Replace `${avayaSdkVersion}` with the version number of the AXP SDK and
+`${path}` with the directory you put the downloaded package files in.
+
+## Usage
+
+### Conversation
+
+Before you can send a message, you need a valid `Conversation`. You can obtain
+this by calling `AxpClientSdk.getDefaultConversation()` from the AXP Core module.
+
+Here's an example of getting the default conversation:
 
 ```kotlin
 launch {
@@ -59,133 +157,145 @@ launch {
 }
 ```
 
-## Sending a Message
+### Sending a Message
 
-Once you have a valid `Conversation`, you can use it to send message.
+Once you have a valid `Conversation`, you can use it to send messages.
+
+The AXP Messaging module supports various types of messages, including:
+
+- Text (Plain text, Emojis, Links)
+- Postback
+- Reply
+- Attachment
+- Location
+
+To link a message to a previous message in the thread, each of the methods for
+sending a message has an optional parameter for the message ID of the parent
+message.
+
+#### Sending a Plain Text Message
 
 ```kotlin
 val message = "Hello, how can I help you?"
 conversation.sendMessage(message)
 ```
 
-The AXP Messaging module supports various types of messages, including:
+#### Sending a Location Message
 
-- Text(Plain text, Emoji's, Links)
-- Postback
-- Reply
-- Attachment
-- Location
-
-## Sending a Location Message
-
-A location message includes latitude and longitude coordinates. Here's an example of how you might
-send a location message:
+A location message includes latitude and longitude coordinates.
 
 ```kotlin
 // LOCATION_NAME, ADDRESS_LINE, PARENT_MESSAGE_ID are optional
-conversation.sendMessage(LocationMessage(latitude, longitude, LOCATION_NAME, ADDRESS_LINE), PARENT_MESSAGE_ID)
+conversation.sendMessage(
+    LocationMessage(latitude, longitude, LOCATION_NAME, ADDRESS_LINE),
+    PARENT_MESSAGE_ID
+)
 ```
 
-## Sending a Postback Message
-
-Here's an example of how you might send a postback message:
+#### Sending a Postback Message
 
 ```kotlin
 // PARENT_MESSAGE_ID is optional
 conversation.sendMessage(PostbackMessage(text, payload), PARENT_MESSAGE_ID)
 ```
 
-## Sending a Reply Message
-
-Here's an example of how you might send a reply message:
+#### Sending a Reply Message
 
 ```kotlin
 // ICON_URL, PARENT_MESSAGE_ID are optional
 conversation.sendMessage(ReplyMessage(text, payload, ICON_URL), PARENT_MESSAGE_ID)
 ```
 
-## Sending an Attachment Message
+#### Sending an Attachment Message
 
-An attachment message includes a file and other data. Here's an example of how you might send an
-attachment message:
+An attachment message includes a file and other data.
 
 ```kotlin
 // CAPTION, PARENT_MESSAGE_ID are optional
 conversation.sendMessage(AttachmentMessage(file, CAPTION), PARENT_MESSAGE_ID)
 ```
 
-for all the above methods, we are even supporting the callback to get the status of the message
-sent.
+### Fetching Older Messages
 
-## Fetching Older Messages
-
-The AXP Messaging module allows you to fetch older messages from a conversation. This is done using the `getMessages` method, which returns a `PageIterator<Message>`. This iterator can be used to cycle through the messages.
-
-Here's an example of how to fetch older messages:
+To fetch older messages from a conversation, use the `getMessages` method, which
+returns a `PageIterator<Message>`. This iterator can be used to cycle through
+the messages.
 
 ```kotlin
 // The default page size is 10
 val messageIterator = conversation.getMessages(pageSize = 10)
+val firstPageOfMessages = messageIterator.items
 if (messageIterator.hasNext()) {
     val nextMessagePage = messageIterator.next()
-    // You can now use the messages from nextMessagePage
+    val nextPageOfMessages = nextMessagePage.items
 }
 ```
 
-## Receiving and Checking Delivery of Messages
+### Receiving and Checking Delivery of Messages
 
-To receive the latest messages and check whether a message has been delivered to the server. You can achieve this by adding listeners to the conversation or using Kotlin's Flow.
+To receive the latest messages and check whether a message has been delivered to
+the server, you can add a listener to the conversation or observe the Flow of
+messages.
+
+#### Receiving Messages via a Listener
 
 Here's how you can add a listener to receive the latest messages:
 
-
 ```kotlin
 // Using a listener
-val messageArrivedListener=MessageArrivedListener { message ->
+val messageArrivedListener = MessageArrivedListener { message ->
     // You can now use the received message
 }
 conversation.addMessageArrivedListener(messageArrivedListener)
 ```
 
-Similarly, you can add a listener to check whether a message has been delivered to the server:
+Similarly, you can add a listener to check whether a message has been delivered
+to the server:
 
 ```kotlin
-val messageDeliveredListener=MessageDeliveredListener { message ->
+val messageDeliveredListener = MessageDeliveredListener { message ->
     // You can now use the delivered message
 }
 conversation.addMessageDeliveredListener(messageDeliveredListener)
 ```
-### Using Flow
-Here's how you can use Flow to receive the latest messages:
+
+#### Receiving Messages via a Flow
+
+Here's how you can use the Flow to receive the latest messages:
+
 ```kotlin
 conversation.messageArrivedFlow.collect { message ->
     // You can now use the received message
 }
 ```
-Similarly, you can use Flow to check whether a message has been delivered to the server:
+
+Similarly, you can use the Flow to check whether a message has been delivered to
+the server:
+
 ```kotlin
 conversation.messageDeliveredFlow.collect { message ->
     // You can now use the delivered message
 }
 ```
-By using listeners or Flow, you can effectively handle incoming messages and check their delivery status in your application.
 
+### Monitoring Participant Changes
 
-## Monitoring Participant Changes
-
-You can monitor changes to the participants in a conversation by adding a listener to the conversation or by listening to the flow. Here's how:
-
+You can monitor changes to the participants in a conversation by adding a
+listener to the conversation or by observing the flow.
 
 ```kotlin
 // Using a listener
-conversation.addParticipantsChangedListener { participantChange ->
-    // You can now use the participantChange object
+conversation.addParticipantsChangedListener { changedParticipants ->
+    // You can now use the set of changed participants
 }
+```
 
+or
+
+```kotlin
 // Using flow
-conversation.participantsFlow.collect { participants ->
-    // You can now use the participants object
-    val newParticipants: Set<Participant> = participants
+conversation.participantsFlow.collect { changedParticipants ->
+    // You can now use the set of changed participants
 }
 ```
 
@@ -195,3 +305,4 @@ To access participants that are only related to messaging, you can get them by
 val messagingParticipants = conversation.participants(AxpChannel.MESSAGING)
 ```
 
+# Package com.avaya.axp.client.sdk.messaging

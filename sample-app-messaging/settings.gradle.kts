@@ -13,16 +13,15 @@ pluginManagement {
     }
 }
 
-plugins {
-    id("nu.studer.credentials") version "3.0"
-}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+        }
     }
 }
 
-
-rootProject.name = "sample-app-messaging"
+rootProject.name = "AXP Client SDK Sample Messaging App"

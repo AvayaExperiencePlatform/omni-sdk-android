@@ -1,94 +1,216 @@
-# AXP Core
+# Module AXP Core
+
 ## Overview
 
-The AXP Core module provides the basic functionality to configure the SDK and retrieve the default conversation of the user.
+The AXP Core module is the fundamental base of the Android version of the AXP
+Client SDK.
+
+The main responsibility of the core is to manage sessions with AXP. It provides
+the essential logic for configuring the SDK and making REST API calls to AXP.
+However, this module is not standalone and works in conjunction with two other
+optional modules:
+
+1. **AxpMessaging**: Enables text messaging to agents in AXP.
+2. **AxpCalling**: Enables voice calls with agents in AXP over the Internet
+   using WebRTC.
+
+Developers can choose to include only the modules needed for their application
+and omit the others if their functionality is not required. Note that the Core
+module is always required.
+
+## Prerequisites
+
+To use this SDK, you need an account registered with the Avaya Experience
+Platform™, and have that account provisioned to enable use of the client APIs.
+
+Once you have an account, it must be provisioned for the following two items:
+
+1. **Integration ID**
+
+   To create an integration, follow the instructions in [Creating an Omni SDK
+   Integration]
+   (https://documentation.avaya.com/bundle/ExperiencePlatform_Administering_10/page/Creating_an_Omni_SDK_integration.html).
+   The two services you can enable there (**Messaging** and **WebRTC Voice**)
+   each correspond to a client SDK module, and you must enable the services for
+   the modules that you will use.
+
+   Note the integration ID that is created, as you will need to provide it when
+   configuring the SDK as described below.
+
+2. **Application Key**
+
+   To enable remote access to the AXP APIs, you need to get an application key
+   as described in [How to Authenticate with Avaya Experience Platform™ APIs]
+   (https://developers.avayacloud.com/avaya-experience-platform/docs/how-to-authenticate-with-axp-apis).
+
+   Note the application key that is created, as you will need to provide it when
+   configuring the SDK as described below.
 
 ## Installation
 
-Add this core dependency to your `build.gradle` file:
+The AXP Core module is distributed via the Maven registry in GitHub Packages.
+
+### Maven Installation
+
+If you have a GitHub account, you can use it to download the package
+automatically from the registry.
+
+#### Generate a Personal Access Token
+
+To download packages from the GitHub registry, you first need to generate an
+authentication token for your GitHub account.
+
+To generate one, follow the instructions from [Creating a personal access token
+(classic)]
+(https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)
+For the selected scopes, pick "read:packages".
+
+#### Add Repository
+
+To access the AXP SDK repository, add the following to your `build.gradle` or
+`settings.gradle` file:
 
 ```groovy
-dependencies {
-    implementation files('${path}/core.jar')
+// For Groovy
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+        credentials {
+            username = "<GITHUB-ACCOUNT>"
+            password = "<GITHUB-TOKEN>"
+        }
+    }
 }
 ```
 
-If you're using Kotlin DSL, add:
+or if using the Kotlin DSL, `build.gradle.kts` or `settings.gradle.kts` file:
 
 ```kotlin
-dependencies {
-    implementation(files("${path}/core.jar"))
+// For Kotlin DSL
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+        credentials {
+            username = "<GITHUB-ACCOUNT>"
+            password = "<GITHUB-TOKEN>"
+        }
+    }
 }
 ```
 
-In both cases, replace ${path} with the original path of jar. You can find the latest version on the [AXP SDK releases page](./omni-sdk/core-0.0.1.jar).
+replacing `<GITHUB-ACCOUNT>` with your GitHub user ID and `<GITHUB-TOKEN>` with
+the token generated in the previous step.
 
+#### Include Package
+
+To include the package in your project, add the following to your `build.gradle`
+file:
+
+```groovy
+// For Groovy
+dependencies {
+    implementation 'com.avaya.sdk:core:${avayaSdkVersion}'
+}
+```
+
+or Kotlin `build.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+dependencies {
+    implementation("com.avaya.sdk:core:${avayaSdkVersion}")
+}
+```
 
 Replace `${avayaSdkVersion}` with the latest version of the AXP SDK.
 
+### Manual Installation
+
+If you don't have or wish to use a GitHub account, you can download the package
+manually from [its package page]
+(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727)
+
+#### Include Package
+
+To include the package in your project, add the following to your `build.gradle`
+file:
+
+```groovy
+// For Groovy
+dependencies {
+    implementation files('${path}/core-${avayaSdkVersion}.aar')
+}
+```
+
+or Kotlin `build.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+dependencies {
+    implementation(files("${path}/core-${avayaSdkVersion}.jar.aar"))
+}
+```
+
+Replace `${avayaSdkVersion}` with the version number of the AXP SDK and
+`${path}` with the directory you put the downloaded package file in.
+
 ## SDK Configuration
 
-Before using any SDK functionality, it needs to be configured using the `AxpClientSdk.configureSdk`
-method. The configuration parameters include:
-
-1. One that takes a region parameter, which is an enumerated type defining the various geographic
-   regions around the world in which AXP is provided. The region closest to the developer's location
-   should be used.
-2. Another that takes a hostname parameter, which is the hostname of the AXP API endpoint to connect
-   to. This is primarily intended for internal Avaya use, because it allows connecting to
-   development
-   labs and not just the production environments.
+Before using any SDK functionality, it needs to be configured using the
+`AxpClientSdk.configureSdk` method.
 
 ### Configuration Parameters
 
-- `host`: Hostname of the AXP API endpoint to connect to or an AXP region code. If a region code is provided (e.g., "na" for North America), it will be converted to the corresponding hostname (e.g., "na.cc.avayacloud.com"). If a full hostname is provided (e.g., "axp-dev.avayacloud.com"), it will be used as is.
-- `appKey`: Application Key which is required to access the API for your Account.
-- `integrationId`: The integration ID for the tenant that is configured on AXP.
-- `jwtProvider`: Application-provided instance that fetches a JWT for authentication from AXP.
-- `configMap`: Optional map of additional configuration. See [SdkConfigKey] for the possible entries.
+- `applicationContext`: Your Android application's context. It must be the
+  application context, and can not be an activity or service context.
+- `host`: The hostname of the AXP API endpoint to connect to. You can also pass
+  in an `AxpApiRegion` instance for the AXP geographic region of your account.
+- `appKey`: The application key for your tenant integration configured on AXP,
+  as described in the *Prerequisites* section above.
+- `integrationId`: The integration ID for the tenant that is configured on AXP,
+  as described in the *Prerequisites* section above.
+- `jwtProvider`: An instance implementing the `JwtProvider` interface to be used
+  in authenticating the client with AXP.
+- `configMap`: An optional map of additional configuration items. See the
+  `SdkConfigKey` enumerated type for the possible keys in this map and their
+  possible values. The contents of this map are checked at runtime for type
+  correctness, and an exception will be thrown if a value is not of the expected
+  type for its key.
 
 Here's an example of SDK configuration for an application in North America:
 
 ```kotlin
 AxpClientSdk.configureSdk(
+    applicationContext = context,
     host = AxpApiRegion.NORTH_AMERICA,
     appKey = MY_APP_KEY,
     integrationId = MY_INTEGRATION_ID,
     jwtProvider = MyJwtProvider(),
     configMap = mapOf(
         SdkConfigKey.USER_AGENT to MY_USER_AGENT,
-        SdkConfigKey.APPLICATION_CONTEXT to applicationContext
-    )
-)
-```
-
-or you can even use
-
-```kotlin
-AxpClientSdk.configureSdk(
-    host = HOST_NAME,
-    integrationId = MY_INTEGRATION_ID,
-    jwtProvider = MyJwtProvider(),
-    configMap = mapOf(
-        SdkConfigKey.USER_AGENT to MY_USER_AGENT,
-        SdkConfigKey.APPLICATION_CONTEXT to applicationContext
+        SdkConfigKey.DISPLAY_NAME to "My User Name"
     )
 )
 ```
 
 ## Authentication
 
-The AXP Client SDK uses JSON Web Tokens (JWT) for client authentication. The JWT is obtained from
-your own web application that communicates with AXP's authentication API.  
-Implementing the JwtProvider Interface
+The AXP Client SDK uses JSON Web Tokens (JWT) for client authentication. The JWT
+is obtained from your own web application that communicates with AXP's
+authentication API.
 
-To provide the SDK with the JWT, you need to implement the JwtProvider interface in your
-application. This interface has a single method, fetchJwt, which is a suspending function that
-returns a JWT.
-In your implementation of fetchJwt, you should connect to your web application, which in turn talks
-to AXP to get the JWT. If there is any failure in getting the JWT, return null and the corresponding
-HTTP request will fail with an authentication error. Here is an example of how you might implement
-this interface:
+### Implementing the JwtProvider Interface
+
+To provide the SDK with the JWT, you need to implement the `JwtProvider`
+interface in your application. This interface has a single method, `fetchJwt`,
+which is a suspending function that returns a JWT.
+
+In your implementation of `fetchJwt`, you should connect to your web application,
+which in turn talks to AXP to get the JWT. If there is any failure in getting
+the JWT, return `null` and the corresponding HTTP request will fail with an
+authentication error.
+
+Here is an example of how you might implement this interface:
 
 ```kotlin
 class MyJwtProvider : JwtProvider {
@@ -100,35 +222,39 @@ class MyJwtProvider : JwtProvider {
 }
 ```
 
-Once you have implemented the JwtProvider interface, you can pass an instance of your implementation
-to the AxpClientSdk.configureSdk method:
+Once you have implemented the `JwtProvider` interface, you pass an instance of
+your implementation to the `AxpClientSdk.configureSdk` method as part of the
+configuration process.
 
 ## Asynchronous Operation
 
-The AXP SDK provides two types of asynchronous operations:
+For every API call that involves asynchronous operation (such as making network
+requests to AXP), the AXP Client SDK provides two versions for Android:
 
-1. **Kotlin Coroutines**: These are operations that are defined as suspend fun in Kotlin. They are
-   designed
-   to be used with Kotlin's built-in coroutines feature for handling asynchronous tasks. When these
-   operations complete, they return an instance of the AxpResult type.
-2. **Async Callbacks**: These are operations that have "Async" appended to their name. They are
-   designed
-   for use by applications that are not using Kotlin coroutines. These operations take an additional
-   parameter, which is an application-supplied instance of the ResponseHandler callback type.
+1. **Kotlin Coroutines**: These are operations that are defined as `suspend fun`
+   in Kotlin. They are designed to be used from Kotlin coroutines for handling
+   asynchronous tasks. When these operations complete, they return an instance
+   of the `AxpResult` type, which wraps a success value or an error.
+2. **Async Callbacks**: These are operations that are defined without the
+   `suspend` keyword. They are designed for use by applications that are not
+   using Kotlin coroutines (e.g. apps written in Java). These operations take an
+   additional parameter, which is an application-supplied instance of the
+   `ResponseHandler` callback type. When the operation completes, the supplied
+   callback will be invoked with either the success value or an error object.
 
 ### Example: getDefaultConversation
 
-Here's an example of how you might use both types of asynchronous operations with the
-getDefaultConversation method in the AXP SDK:
+Here's an example of how you might use both types of asynchronous operations
+with the `getDefaultConversation` method in the AXP SDK:
 
 #### Using Kotlin Coroutines
 
 ```kotlin
 launch {
-    when (val conversationResult = AxpClientSdk.getDefaultConversation()) {
+    when (val result = AxpClientSdk.getDefaultConversation()) {
         is AxpResult.Success -> {
             // Handle success
-            val conversation = conversationResult.value
+            val conversation = result.value
         }
         is AxpResult.Failure -> {
             // Handle failure
@@ -141,47 +267,49 @@ launch {
 #### Using Async Callbacks
 
 ```kotlin
-AxpClientSdk.getDefaultConversation(object : ResponseHandler<UserSession> {
-    override fun onSuccess(conversationResult: Conversation) {
+AxpClientSdk.getDefaultConversation(object : ResponseHandler<Conversation> {
+    override fun onSuccess(result: Conversation) {
         // Handle success
-        val conversation = conversationResult.value
     }
 
-    override fun onFailure(error: AxpSdkError) {
+    override fun onFailure(error: AxpError) {
         // Handle failure
     }
 })
 ```
 
-## Session Management
+## AxpClientSdk Methods
 
-### getDefaultConversation
+The AXP Client SDK provides the following class methods that apply to the SDK as
+a whole.
 
-The `getDefaultConversation` method is used to get the default conversation.
+### Getting the Conversation
 
-This method throws a SdkNotConfiguredException if configureSdk has not previously been called.
-
-|Property|Description|
-| --| -- |
-|contextParameters| Optional key/value context information. This information might be used to make business decisions on how the dialog is treated. For example, the client application might want to send hints about customer's interest based on the customer's searches or FAQ browsing.|
-|conversationId| Unique Identifier for the conversation|
-|participants|The current Participants in the conversation across all channel types.|
-|participantsFlow| `Flow` to observe for when the set of participants changes across all channel types.|
-
- |Methods| Description|
- |--|--|
- |getParticipantById(participantId)|Returns the Participant in the conversation with the given ID.|
- |participants(channel: AxpChannel)|Returns a set of `Participants` that are part of the conversation in the specified channel.|
- |addParticipantsChangedListener(listener: ParticipantsChangedListener)| For Java applications that can't directly observe a Kotlin Flow, use this to register a listener to be called when the set of participants in the conversation changes.|
-|removeParticipantsChangedListener(listener:ParticipantsChangedListener)| Removes the attached listener from the conversation|
-
-
-
-
-### Shutdown SDK
-
-The `shutDown` method is used to terminate the current user session. Irrespective of the success or failure of the termination operation, the SDK cleanup will be performed.
+The `getDefaultConversation` returns a `Conversation` instance that can be used
+with the other modules for a chat message session or voice call. If there is not
+currently a conversation, a new one will be created.
 
 ```kotlin
-AxpClientSdk.shutDown()
+suspend fun getDefaultConversation(): AxpResult<out Conversation>
+
+fun getDefaultConversation(responseHandler: ResponseHandler<Conversation>)
 ```
+
+### Terminating the SDK
+
+The `shutDown` method is used to terminate the current user session. After
+calling this, the SDK can no longer be used until it is reconfigured by calling
+`configureSdk` again.
+
+```kotlin
+suspend fun shutDown(): AxpResult<Unit>
+
+fun shutDown(responseHandler: ResponseHandler<Unit>)
+```
+
+This method does not take any parameters. There is effectively no result value,
+but if there is an error it will be communicated via the `AxpResult` or
+`ResponseHandler`. Even if an error occurs, the SDK is terminated and can not be
+used afterwards.
+
+# Package com.avaya.axp.client.sdk

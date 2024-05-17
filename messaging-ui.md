@@ -63,29 +63,128 @@ The Avaya Messaging UI SDK's customization capabilities empower developers to cr
 
 ### Using the Messaging UI SDK in Your Application
 
-## Integration Steps
+## Installation
 
-To incorporate the Messaging UI SDK into your application, follow these simple steps:
+The AXP Messaging UI library is distributed via the Maven registry in GitHub
+Packages.
 
-1. **Download the SDK:**
-   Add the SDK to any folder within your application. Obtain the path of the `messaging-ui.aar` file.
+### Maven Installation
 
-2. **Update `build.gradle`:**
-      Open your app-level `build.gradle` file.
-      Add the following dependency to include the Messaging UI SDK: 
-      - Groovy
-      ```groovy
-    dependencies {
-        implementation files('{path}/messaging-ui.aar')
+If you have a GitHub account, you can use it to download the package
+automatically from the registry.
+
+#### Generate a Personal Access Token
+
+To download packages from the GitHub registry, you first need to generate an
+authentication token for your GitHub account.
+
+To generate one, follow the instructions from [Creating a personal access token
+(classic)]
+(https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)
+For the selected scopes, pick "read:packages".
+
+#### Add Repository
+
+To access the AXP SDK repository, add the following to your `build.gradle` or
+`settings.gradle` file:
+
+```groovy
+// For Groovy
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+        credentials {
+            username = "<GITHUB-ACCOUNT>"
+            password = "<GITHUB-TOKEN>"
+        }
     }
-    ```
-    - kotlinDSL
-    ```kotlinDSL
-    dependencies {
-        implementation (files("{path}/messaging-ui.aar"))
+}
+```
+
+or if using the Kotlin DSL, `build.gradle.kts` or `settings.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+        credentials {
+            username = "<GITHUB-ACCOUNT>"
+            password = "<GITHUB-TOKEN>"
+        }
     }
-    ```
-Replace `{path}` with the absolute path of the `messaging-ui.aar` file. And sync the project.
+}
+```
+
+replacing `<GITHUB-ACCOUNT>` with your GitHub user ID and `<GITHUB-TOKEN>` with
+the token generated in the previous step.
+
+#### Include Package
+
+To include the package in your project, add the following to your `build.gradle`
+file:
+
+```groovy
+// For Groovy
+dependencies {
+    implementation 'com.avaya.sdk:core:${avayaSdkVersion}'
+    implementation 'com.avaya.sdk:messaging:${avayaSdkVersion}'
+    implementation 'com.avaya.sdk:messaging-ui:${avayaSdkVersion}'
+}
+```
+
+or Kotlin `build.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+dependencies {
+    implementation("com.avaya.sdk:core:${avayaSdkVersion}")
+    implementation("com.avaya.sdk:messaging:${avayaSdkVersion}")
+    implementation("com.avaya.sdk:messaging-ui:${avayaSdkVersion}")
+}
+```
+
+Replace `${avayaSdkVersion}` with the latest version of the AXP SDK.
+
+### Manual Installation
+
+If you don't have or wish to use a GitHub account, you can download the package
+manually from [its package page]
+(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150733)
+
+You'll also need to download the [Core module]
+(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727)
+and [Messaging Module]
+(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150732)
+that it depends on.
+
+#### Include Package
+
+To include the package in your project, add the following to your `build.gradle`
+file:
+
+```groovy
+// For Groovy
+dependencies {
+    implementation files('${path}/core-${avayaSdkVersion}.aar')
+    implementation files('${path}/messaging-${avayaSdkVersion}.aar')
+    implementation files('${path}/messaging-ui-${avayaSdkVersion}.aar')
+}
+```
+
+or Kotlin `build.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+dependencies {
+    implementation(files("${path}/core-${avayaSdkVersion}.jar.aar"))
+    implementation(files("${path}/messaging-${avayaSdkVersion}.jar.aar"))
+    implementation(files("${path}/messaging-ui-${avayaSdkVersion}.jar.aar"))
+}
+```
+
+Replace `${avayaSdkVersion}` with the version number of the AXP SDK and
+`${path}` with the directory you put the downloaded package files in.
 
 ## Getting Started with UI Customization and flags
 
@@ -93,6 +192,12 @@ Replace `{path}` with the absolute path of the `messaging-ui.aar` file. And sync
 
 ### Flags:
 
+- `autoDownloadImages` :
+  Set this flag to true if you want to automatically download Images.
+- `autoDownloadMediaFiles` :
+  Set this flag to true if you want to automatically download Media Files.
+- `mediaSavePath` :
+  Directory path where you want to save downloaded media files or will be saved in Downloads folder.  
 - `showAgentEvents` :
   Set this flag to true if you want to show the agent joined and left events in the messaging window.
 - `showAutomationEvents` :
@@ -103,9 +208,13 @@ Replace `{path}` with the absolute path of the `messaging-ui.aar` file. And sync
   Set this flag to true if you want to show the active participants list in the messaging window.
 - `useBusinessAsParticipant` :
   Set this flag to true if you want to use business as a participant in the messaging window.
+- `showIdleTimeoutDialog` :
+  Set this flag to true if you want to show the idle timeout dialog in the messaging window when there is no activity from customer.
 
 ### Functions:
 
+- `init()`
+  starts observing idle timeout and events stream state / server connection state.
 - `setUiThemeLight()`
   Set the UI theme to light.
 - `setUiThemeDark()`
@@ -137,7 +246,16 @@ The `ConversationHandler` exposes essential properties and methods for developer
 
 - `getLocationDetails(onComplete:(LocationMessage?)->Unit)`: The app should fetch the location and call the `onComplete` method with the location details. If it fails to fetch the location details, it should call the `onComplete` method with `null`.
 - `getLocationUrl(latitude:Double?,longitude:Double?):String` : The app should provide the location URL using latitude and longitude. When clicked, the user will be directed to maps or a browser.
+- `GetLocationMapWidget(latitude:Double?,longitude:Double?)` : This Composable function  is used to get the location map widget.
 
 ### Show Messaging UI
 
 - To show the messaging UI, you can use the `ShowMessagingUI(conversationHandler: ConversationHandler)` composable function. You can pass the conversation handler object to this function and the UI for that conversation will be rendered on the Messaging screen.  
+
+### Permissions
+
+- To use all the features of ui sdk, you need to give permissions for camera, audio recording and notifications. You can do it manually by going to app info or you can add mechanism to give permission at runtime.
+
+### Push notifications
+- Generate and add google-services.json file in sample-app-messaging directory 
+- Enable permission for notifications
