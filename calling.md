@@ -10,10 +10,9 @@ depends on the Core module for configuring the SDK and authenticating with AXP.
 
 To use the Calling module, you need an Omni SDK integration provisioned with
 the **WebRTC Voice** service enabled. Follow the instructions in
-[Creating an Omni SDK Integration]
-(https://documentation.avaya.com/bundle/ExperiencePlatform_Administering_10/page/Creating_an_Omni_SDK_integration.html)
-to set up an integration with voice support and use the integration ID for
-configuring the SDK as described in the documentation for the Core module.
+[Creating an Omni SDK Integration][omni-integration] to set up an integration
+with voice support and use the integration ID for configuring the SDK as
+described in the documentation for the Core module.
 
 ## Installation
 
@@ -30,9 +29,7 @@ To download packages from the GitHub registry, you first need to generate an
 authentication token for your GitHub account.
 
 To generate one, follow the instructions from [Creating a personal access token
-(classic)]
-(https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)
-For the selected scopes, pick "read:packages".
+(classic)][gh-token]. For the selected scopes, pick "read:packages".
 
 #### Add Repository
 
@@ -100,14 +97,10 @@ Replace `${avayaSdkVersion}` with the latest version of the AXP SDK.
 ### Manual Installation
 
 If you don't have or wish to use a GitHub account, you can download the package
-manually from [its package page]
-(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150736)
+manually from [its package page][package].
 
-You'll also need to download the [Core module]
-(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727)
-and [calling helper library]
-(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150734)
-that it depends on.
+You'll also need to download the [Core module][core-package] and [calling helper
+library][mpaas-package] that it depends on.
 
 #### Include Package
 
@@ -222,9 +215,8 @@ To support this in your app, you need to do two things:
 
 ## Jetpack Telecom Integration
 
-The AXP Calling SDK has integration with Google's [Jetpack Telecom API]
-(https://developer.android.com/develop/connectivity/telecom/voip-app/telecom)
-to simplify writing calling applications.
+The AXP Calling SDK has integration with Google's [Jetpack Telecom
+API][telecom-api] to simplify writing calling applications.
 
 The SDK already implements everything needed for calling with Jetpack Telecom.
 To use it, in your application, instead of starting calls manually as described
@@ -234,3 +226,10 @@ to trigger the call service, which calls into the AXP SDK APIs to start the call
 on the default conversation. It takes the same parameters as `addCall`.
 
 # Package com.avaya.axp.client.sdk.webrtc
+
+[omni-integration]: https://documentation.avaya.com/bundle/ExperiencePlatform_Administering_10/page/Creating_an_Omni_SDK_integration.html
+[gh-token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic
+[package]: https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150736
+[core-package]: https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727
+[mpaas-package]: https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150734
+[telecom-api]: https://developer.android.com/develop/connectivity/telecom/voip-app/telecom

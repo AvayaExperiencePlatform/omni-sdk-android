@@ -28,11 +28,9 @@ Once you have an account, it must be provisioned for the following two items:
 1. **Integration ID**
 
    To create an integration, follow the instructions in [Creating an Omni SDK
-   Integration]
-   (https://documentation.avaya.com/bundle/ExperiencePlatform_Administering_10/page/Creating_an_Omni_SDK_integration.html).
-   The two services you can enable there (**Messaging** and **WebRTC Voice**)
-   each correspond to a client SDK module, and you must enable the services for
-   the modules that you will use.
+   Integration][omni-integration]. The two services you can enable there
+   (**Messaging** and **WebRTC Voice**) each correspond to a client SDK module,
+   and you must enable the services for the modules that you will use.
 
    Note the integration ID that is created, as you will need to provide it when
    configuring the SDK as described below.
@@ -40,8 +38,8 @@ Once you have an account, it must be provisioned for the following two items:
 2. **Application Key**
 
    To enable remote access to the AXP APIs, you need to get an application key
-   as described in [How to Authenticate with Avaya Experience Platform™ APIs]
-   (https://developers.avayacloud.com/avaya-experience-platform/docs/how-to-authenticate-with-axp-apis).
+   as described in [How to Authenticate with Avaya Experience Platform™
+   APIs][axp-auth].
 
    Note the application key that is created, as you will need to provide it when
    configuring the SDK as described below.
@@ -61,9 +59,7 @@ To download packages from the GitHub registry, you first need to generate an
 authentication token for your GitHub account.
 
 To generate one, follow the instructions from [Creating a personal access token
-(classic)]
-(https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)
-For the selected scopes, pick "read:packages".
+(classic)][gh-token]. For the selected scopes, pick "read:packages".
 
 #### Add Repository
 
@@ -127,8 +123,7 @@ Replace `${avayaSdkVersion}` with the latest version of the AXP SDK.
 ### Manual Installation
 
 If you don't have or wish to use a GitHub account, you can download the package
-manually from [its package page]
-(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727)
+manually from [its package page][package].
 
 #### Include Package
 
@@ -313,3 +308,8 @@ but if there is an error it will be communicated via the `AxpResult` or
 used afterwards.
 
 # Package com.avaya.axp.client.sdk
+
+[omni-integration]: https://documentation.avaya.com/bundle/ExperiencePlatform_Administering_10/page/Creating_an_Omni_SDK_integration.html
+[axp-auth]: https://developers.avayacloud.com/avaya-experience-platform/docs/how-to-authenticate-with-axp-apis
+[gh-token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic
+[package]: https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727
