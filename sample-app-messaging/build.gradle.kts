@@ -1,8 +1,11 @@
 plugins {
     id("com.android.application") version "8.3.2"
     id("org.jetbrains.kotlin.android") version "1.9.22"
-    id("com.google.gms.google-services") version "4.4.1"
     id("com.google.devtools.ksp") version "1.9.22-1.0.18"
+}
+val googleServicesFile = file("src/main/google-services.json")
+if (googleServicesFile.exists()) {
+    apply(plugin = "com.google.gms.google-services")
 }
 
 android {

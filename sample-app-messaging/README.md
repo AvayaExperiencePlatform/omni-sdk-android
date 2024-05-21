@@ -2,33 +2,128 @@
 
 This guide serves as an example for implementing the core, messaging, and messaging UI SDKs with minimum requirements. It demonstrates how to integrate a messaging interface into your application seamlessly, utilizing these three libraries.
 
-## Integration Steps
+## Installation
 
-To incorporate the Messaging UI SDK into your application seamlessly, follow these straightforward integration steps:
+The AXP Messaging UI library is distributed via the Maven registry in GitHub
+Packages.
 
-1. **Add SDK Files to Your Project:**
-    - Include the `.jar` and `.aar` files in your project. We have included it in the omni-sdk folder.
+### Maven Installation
 
-2. **Implement Dependencies:**
-    - In your app-level `build.gradle` file, add the following dependencies:
+If you have a GitHub account, you can use it to download the package
+automatically from the registry.
+
+#### Generate a Personal Access Token
+
+To download packages from the GitHub registry, you first need to generate an
+authentication token for your GitHub account.
+
+To generate one, follow the instructions from [Creating a personal access token
+(classic)]
+(https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)
+For the selected scopes, pick "read:packages".
+
+#### Add Repository
+
+To access the AXP SDK repository, add the following to your `build.gradle` or
+`settings.gradle` file:
 
 ```groovy
-   dependencies {
-       implementation files('{path}/core.jar')
-       implementation files('{path}/messaging.jar')
-       implementation files('{path}/messaging-ui.aar')
-   }
+// For Groovy
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+        credentials {
+            username = "<GITHUB-ACCOUNT>"
+            password = "<GITHUB-TOKEN>"
+        }
+    }
+}
 ```
 
-kotlinDSL
-```kotlinDSL
-   dependencies {
-       implementation (files("{path}/core.jar"))
-       implementation (files("{path}/messaging.jar"))
-       implementation (files("{path}/messaging-ui.aar"))
-   }
+or if using the Kotlin DSL, `build.gradle.kts` or `settings.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/AvayaExperiencePlatform/omni-sdk-android")
+        credentials {
+            username = "<GITHUB-ACCOUNT>"
+            password = "<GITHUB-TOKEN>"
+        }
+    }
+}
 ```
-Replace {path} with the absolute path to the .aar files.
+
+replacing `<GITHUB-ACCOUNT>` with your GitHub user ID and `<GITHUB-TOKEN>` with
+the token generated in the previous step.
+
+#### Include Package
+
+To include the package in your project, add the following to your `build.gradle`
+file:
+
+```groovy
+// For Groovy
+dependencies {
+    implementation 'com.avaya.sdk:core:${avayaSdkVersion}'
+    implementation 'com.avaya.sdk:messaging:${avayaSdkVersion}'
+    implementation 'com.avaya.sdk:messaging-ui:${avayaSdkVersion}'
+}
+```
+
+or Kotlin `build.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+dependencies {
+    implementation("com.avaya.sdk:core:${avayaSdkVersion}")
+    implementation("com.avaya.sdk:messaging:${avayaSdkVersion}")
+    implementation("com.avaya.sdk:messaging-ui:${avayaSdkVersion}")
+}
+```
+
+Replace `${avayaSdkVersion}` with the latest version of the AXP SDK.
+
+### Manual Installation
+
+If you don't have or wish to use a GitHub account, you can download the package
+manually from [its package page]
+(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150733)
+
+You'll also need to download the [Core module]
+(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727)
+and [Messaging Module]
+(https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150732)
+that it depends on.
+
+#### Include Package
+
+To include the package in your project, add the following to your `build.gradle`
+file:
+
+```groovy
+// For Groovy
+dependencies {
+    implementation files('${path}/core-${avayaSdkVersion}.aar')
+    implementation files('${path}/messaging-${avayaSdkVersion}.aar')
+    implementation files('${path}/messaging-ui-${avayaSdkVersion}.aar')
+}
+```
+
+or Kotlin `build.gradle.kts` file:
+
+```kotlin
+// For Kotlin DSL
+dependencies {
+    implementation(files("${path}/core-${avayaSdkVersion}.jar.aar"))
+    implementation(files("${path}/messaging-${avayaSdkVersion}.jar.aar"))
+    implementation(files("${path}/messaging-ui-${avayaSdkVersion}.jar.aar"))
+}
+```
+
+Replace `${avayaSdkVersion}` with the version number of the AXP SDK and
+`${path}` with the directory you put the downloaded package files in.
 
 ## Required Configurations
 
@@ -87,13 +182,23 @@ dependencies {
 
 ### Updating values in [CONSTANTS.kt](./src/main/java/com/avaya/axp/client/sample_app_messaging/util/Constants.kt) file
 In constants file, update the following values:
-- `AUTH_BASE_URL` = replace with token server url
-- `USER_ID` = replace with customer user id
+- `TOKEN_PROVIDER_URL` = replace with token server URL
+- `USER_ID` = replace with customer user ID
 - `USER_NAME` = replace with customer user name
-- `CONTEXT_PARAMETERS` = replace with map of context parameters
-- `AXP_BASE_URL` = replace with AXP server url
+- `CONTEXT_PARAMETERS` = replace with map of context parameters used for routing to agent
+- `AXP_HOSTNAME` = replace with AXP server URL
 - `AXP_APP_KEY`= replace with AXP app key
-- `AXP_INTEGRATION_ID` = replace with AXP integration id
+- `AXP_INTEGRATION_ID` = replace with AXP integration ID
+- `AXP_CONFIG_ID` = replace with AXP config ID for push notifications
+- `NOTIFICATION_BASE_URL` = replace with notification server URL if you are using push notifications
+
+### Push Notifications
+- To enable push notifications follow the steps below:
+    - Generate and add google-services.json file in the app module of your project.
+    - Create a conifig ID by following the steps mentioned in following link: https://developers.avayacloud.com/avaya-experience-platform/docs/omni-sdk-push-notifications
+    - Add the config ID in [CONSTANTS.kt](./src/main/java/com/avaya/axp/client/sample_app_messaging/util/Constants.kt) file
+    - You need to save config at fcm connector by following the steps mentioned in following link: https://github.com/AvayaExperiencePlatform/omni-sdk-starter-kit/blob/master/%20sample-fcm-push-notification-server/README.md
+    - Device registration and other things will be handled by sample app
 
 ## Running the App
 After making these changes, you're ready to run the app.

@@ -18,7 +18,7 @@ import com.avaya.axp.client.sample_app_messaging.R
 import com.avaya.axp.client.sample_app_messaging.model.NotificationMessage
 import com.avaya.axp.client.sample_app_messaging.model.NotificationParams
 import com.avaya.axp.client.sample_app_messaging.util.ATTACHMENT_EMOJI
-import com.avaya.axp.client.sample_app_messaging.util.AXP_API_KEY
+import com.avaya.axp.client.sample_app_messaging.util.AXP_APP_KEY
 import com.avaya.axp.client.sample_app_messaging.util.AXP_HOSTNAME
 import com.avaya.axp.client.sample_app_messaging.util.AXP_INTEGRATION_ID
 import com.avaya.axp.client.sample_app_messaging.util.IMAGE_EMOJI
@@ -149,7 +149,7 @@ suspend fun getMessagesList(
             AxpClientSdk.configureSdk(
                 applicationContext = context,
                 host = AXP_HOSTNAME,
-                appKey = AXP_API_KEY,
+                appKey = AXP_APP_KEY,
                 integrationId = AXP_INTEGRATION_ID,
                 jwtProvider = AppWebServerJwtProvider()
             )
