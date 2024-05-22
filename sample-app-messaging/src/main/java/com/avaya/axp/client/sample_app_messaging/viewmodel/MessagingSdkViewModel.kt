@@ -14,7 +14,7 @@ import com.avaya.axp.client.sample_app_messaging.service.createNotificationBuild
 import com.avaya.axp.client.sample_app_messaging.service.getSenderName
 import com.avaya.axp.client.sample_app_messaging.util.ADDRESS
 import com.avaya.axp.client.sample_app_messaging.util.ATTACHMENT_EMOJI
-import com.avaya.axp.client.sample_app_messaging.util.AXP_API_KEY
+import com.avaya.axp.client.sample_app_messaging.util.AXP_APP_KEY
 import com.avaya.axp.client.sample_app_messaging.util.AXP_CONFIG_ID
 import com.avaya.axp.client.sample_app_messaging.util.AXP_HOSTNAME
 import com.avaya.axp.client.sample_app_messaging.util.AXP_INTEGRATION_ID
@@ -60,7 +60,7 @@ class MessagingSdkViewModel : ViewModel() {
             messagingSdkConfig = AxpClientSdk.sdkConfig ?: AxpClientSdk.configureSdk(
                 applicationContext = context,
                 host = AXP_HOSTNAME,
-                appKey = AXP_API_KEY,
+                appKey = AXP_APP_KEY,
                 integrationId = AXP_INTEGRATION_ID,
                 jwtProvider = AppWebServerJwtProvider(),
                 configMap = mapOf(
