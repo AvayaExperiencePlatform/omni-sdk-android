@@ -197,6 +197,7 @@ In constants file, update the following values:
     - Generate and add google-services.json file in the app module of your project.
     - Create a conifig ID by following the steps mentioned in following link: https://developers.avayacloud.com/avaya-experience-platform/docs/omni-sdk-push-notifications
     - Add the config ID in [CONSTANTS.kt](./src/main/java/com/avaya/axp/client/sample_app_messaging/util/Constants.kt) file
+    - In MessagingSdkViewModel.kt file, uncomment the line `SdkConfigKey.PUSH_CONFIG_ID to AXP_CONFIG_ID` in `configureSdk(context: Context)` function
     - You need to save config at fcm connector by following the steps mentioned in following link: https://github.com/AvayaExperiencePlatform/omni-sdk-starter-kit/blob/master/%20sample-fcm-push-notification-server/README.md
     - Device registration and other things will be handled by sample app
 
