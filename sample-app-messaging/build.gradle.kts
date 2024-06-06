@@ -56,13 +56,9 @@ android {
 }
 
 dependencies {
-//    implementation("com.avaya.axp.client.sdk:core:0.1.1")
-//    implementation("com.avaya.axp.client.sdk:messaging:0.1.1")
-//    implementation("com.avaya.axp.client.sdk:messaging-ui:0.1.1")
-
-    implementation (files("./libs/core-0.1.1.aar"))
-    implementation (files("./libs/messaging-0.1.1.aar"))
-    implementation (files("./libs/messaging-ui-0.1.1.aar"))
+    implementation("com.avaya.axp.client.sdk:core:0.1.1")
+    implementation("com.avaya.axp.client.sdk:messaging:0.1.1")
+    implementation("com.avaya.axp.client.sdk:messaging-ui:0.1.1")
 
     implementation(group = "androidx.activity", name = "activity-compose", version = "1.9.0")
     implementation(group = "androidx.compose.material", name = "material-icons-extended", version = "1.6.7")
