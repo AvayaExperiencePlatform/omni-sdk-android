@@ -87,6 +87,15 @@ dependencies {
     implementation(group = "com.github.tony19", name = "logback-android", version = "3.0.0")
     implementation(group = "org.slf4j", name = "slf4j-api", version = "2.0.13")
 
+    implementation( group = "androidx.appcompat", name = "appcompat", version = "1.6.1" )
+    implementation(group = "androidx.camera", name = "camera-core", version = "1.3.3")
+    implementation(group = "androidx.camera", name = "camera-camera2", version = "1.3.3")
+    implementation(group = "androidx.camera", name = "camera-lifecycle", version = "1.3.3")
+    implementation(group = "androidx.camera", name = "camera-view", version = "1.3.3")
+    implementation(group = "io.coil-kt", name = "coil-compose", version = "2.6.0")
+    implementation(group = "io.coil-kt", name = "coil-gif", version = "2.4.0")
+    implementation(group = "androidx.compose.runtime", name = "runtime-livedata")
+
     debugImplementation(group = "androidx.compose.ui", name = "ui-tooling")
     debugImplementation(group = "androidx.compose.ui", name = "ui-test-manifest", version = "1.6.7")
 }

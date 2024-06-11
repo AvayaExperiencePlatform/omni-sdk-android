@@ -70,7 +70,8 @@ class MessagingSdkViewModel : ViewModel() {
                         HttpLoggingInterceptor.Level.BASIC
                     },
                     SdkConfigKey.DISPLAY_NAME to USER_NAME,
-                    SdkConfigKey.PUSH_CONFIG_ID to AXP_CONFIG_ID
+//                  Uncomment the below line after adding valid AXP config id for notifications
+//                  SdkConfigKey.PUSH_CONFIG_ID to AXP_CONFIG_ID
                 )
             )
             setUiFlags()

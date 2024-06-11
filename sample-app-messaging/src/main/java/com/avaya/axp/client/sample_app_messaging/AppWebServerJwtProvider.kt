@@ -42,7 +42,7 @@ class AppWebServerJwtProvider : JwtProvider {
             emailAddresses = listOf(USER_ID),
         ),
         userName = USER_NAME,
-        verifiedCustomer = true
+        verified = true
     )
 
     override suspend fun fetchJwt(): JWT? =
@@ -66,7 +66,7 @@ data class JwtTokenRequest(
     val userId: String? = null,
     val userIdentifiers: UserIdentifiers? = null,
     val userName: String? = null,
-    val verifiedCustomer: Boolean? = null
+    val verified: Boolean? = null
 )
 
 @JsonClass(generateAdapter = true)
