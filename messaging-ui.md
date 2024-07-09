@@ -23,7 +23,7 @@ Welcome to the Avaya Messaging UI SDK documentation. This SDK seamlessly integra
    Improve user experience by automatically fetching older messages as users scroll to the top, ensuring a seamless and uninterrupted conversation exploration.
 
 7. **Text Messaging**
-   Enable users to effortlessly type and send text messages, providing a fundamental and user-friendly communication feature.
+   Enable users to type and send text messages effortlessly, offering a fundamental and user-friendly communication feature. This feature also provides real-time status updates for messages, indicating whether they are being sent, have been sent, or have been delivered.
 
 8. **Message Retry**
    Facilitate communication resilience by allowing users to retry sending messages that may have failed in previous attempts.
@@ -39,6 +39,12 @@ Welcome to the Avaya Messaging UI SDK documentation. This SDK seamlessly integra
 
 12. **Rich Media and Attachments**
     Support a variety of rich media types, including postbacks, replies, and carousel displays, allowing for dynamic and engaging content within the messaging interface.
+
+13. **Take Pictures, record audio and video**
+    Enable users to capture and share images, audio, and video files directly within the messaging interface, enhancing communication capabilities and user engagement.
+
+14. **Edit Images Before Sending**
+    Users can edit images before sending them where they can crop, flip and rotate Images, providing a more interactive and personalized messaging experience.
 
 ## Customization Options in Avaya Messaging UI SDK
 
