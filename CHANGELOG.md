@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.2.0 (July 9,2024)
+- Option to edit message before sending and before rendering in AXP Messaging UI module.
+- Option to edit image before sending in AXP Messaging UI module.
+
 ## v0.1.1 (May 17, 2024)
 
 - Introduction of new AXP Omni SDK module: AXP WebRTC.

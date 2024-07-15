@@ -209,6 +209,11 @@ An attachment message includes a file and other data.
 conversation.sendMessage(AttachmentMessage(file, CAPTION), PARENT_MESSAGE_ID)
 ```
 
+### Handling Exceptions When Sending Messages
+
+When you attempt to send a message, it's possible to encounter exceptions. In such cases, you can manage these exceptions by capturing the `IllegalMessageBodyException`. This exception provides you with an error code, accessible via `MessageBodyErrorCode`, and a reason for the exception.
+
+
 ### Fetching Older Messages
 
 To fetch older messages from a conversation, use the `getMessages` method, which
