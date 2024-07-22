@@ -157,12 +157,12 @@ Replace `${avayaSdkVersion}` with the latest version of the AXP SDK.
 
 If you don't have or wish to use a GitHub account, you can download the package
 manually from [its package
-page](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150733).
+page](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2210111).
 
 You'll also need to download the [Core
-module](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727)
+module](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2210109)
 and [Messaging
-Module](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150732)
+Module](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2210110)
 that it depends on.
 
 #### Include Package
@@ -173,9 +173,9 @@ file:
 ```groovy
 // For Groovy
 dependencies {
-    implementation files('${path}/core-${avayaSdkVersion}.aar')
-    implementation files('${path}/messaging-${avayaSdkVersion}.aar')
-    implementation files('${path}/messaging-ui-${avayaSdkVersion}.aar')
+    implementation 'com.avaya.axp.omni.sdk:core:${avayaSdkVersion}'
+    implementation 'com.avaya.axp.omni.sdk:messaging:${avayaSdkVersion}'
+    implementation 'com.avaya.axp.omni.sdk:messaging-ui:${avayaSdkVersion}'
 }
 ```
 
@@ -184,9 +184,9 @@ or Kotlin `build.gradle.kts` file:
 ```kotlin
 // For Kotlin DSL
 dependencies {
-    implementation(files("${path}/core-${avayaSdkVersion}.jar.aar"))
-    implementation(files("${path}/messaging-${avayaSdkVersion}.jar.aar"))
-    implementation(files("${path}/messaging-ui-${avayaSdkVersion}.jar.aar"))
+    implementation("com.avaya.axp.omni.sdk:core:${avayaSdkVersion}")
+    implementation("com.avaya.axp.omni.sdk:messaging:${avayaSdkVersion}")
+    implementation("com.avaya.axp.omni.sdk:messaging-ui:${avayaSdkVersion}")
 }
 ```
 
