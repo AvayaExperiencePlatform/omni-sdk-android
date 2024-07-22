@@ -102,7 +102,7 @@ manually from [its package
 page](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2210110).
 
 You'll also need to download the [Core
-module](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727)
+module](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2210109)
 that it depends on.
 
 #### Include Package
