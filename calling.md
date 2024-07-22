@@ -89,7 +89,7 @@ or Kotlin `build.gradle.kts` file:
 // For Kotlin DSL
 dependencies {
    implementation("com.avaya.axp.omni.sdk:core:${avayaSdkVersion}")
-   implementation("com.avaya.axp.omni.sdk:mpaas-calling::${avayaSdkVersion}")
+   implementation("com.avaya.axp.omni.sdk:mpaas-calling:${avayaSdkVersion}")
    implementation("com.avaya.axp.omni.sdk:calling:${avayaSdkVersion}")
 }
 ```
