@@ -22,7 +22,7 @@ Once you have an account, it must be provisioned for the following two items:
 
    To create an integration, follow the instructions in [Creating an Omni SDK
    Integration][omni-integration]. The two services you can enable there
-   (**Messaging** and **WebRTC Voice**) each correspond to a client SDK module,
+   (**Messaging** and **WebRTC Voice**) each correspond to an SDK module,
    and you must enable the services for the modules that you will use.
 
 2. **Application Key**

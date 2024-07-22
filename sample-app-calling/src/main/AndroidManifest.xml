@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AXPClientSDKForAndroid"
+        android:theme="@style/Theme.AXPOmniSDKForAndroid"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
@@ -38,7 +38,7 @@
             android:turnScreenOn="true" />
 
         <service
-            android:name="com.avaya.axp.client.sdk.webrtc.TelecomCallService"
+            android:name="com.avaya.axp.omni.sdk.webrtc.TelecomCallService"
             android:foregroundServiceType="phoneCall"
             android:exported="false" />
 

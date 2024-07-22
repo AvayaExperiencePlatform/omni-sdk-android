@@ -3,7 +3,7 @@
 ## Overview
 
 The AXP Core module is the fundamental base of the Android version of the AXP
-Client SDK.
+Omni SDK.
 
 The main responsibility of the core is to manage sessions with AXP. It provides
 the essential logic for configuring the SDK and making REST API calls to AXP.
@@ -21,15 +21,16 @@ module is always required.
 ## Prerequisites
 
 To use this SDK, you need an account registered with the Avaya Experience
-Platform™, and have that account provisioned to enable use of the client APIs.
+Platform™, and have that account provisioned to enable use of the APIs.
 
 Once you have an account, it must be provisioned for the following two items:
 
 1. **Integration ID**
 
    To create an integration, follow the instructions in [Creating an Omni SDK
-   Integration][omni-integration]. The two services you can enable there
-   (**Messaging** and **WebRTC Voice**) each correspond to a client SDK module,
+   Integration](https://documentation.avaya.com/bundle/ExperiencePlatform_Administering_10/page/Creating_an_Omni_SDK_integration.html).
+   The two services you can enable there
+   (**Messaging** and **WebRTC Voice**) each correspond to an Omni SDK module,
    and you must enable the services for the modules that you will use.
 
    Note the integration ID that is created, as you will need to provide it when
@@ -39,7 +40,7 @@ Once you have an account, it must be provisioned for the following two items:
 
    To enable remote access to the AXP APIs, you need to get an application key
    as described in [How to Authenticate with Avaya Experience Platform™
-   APIs][axp-auth].
+   APIs](https://developers.avayacloud.com/avaya-experience-platform/docs/how-to-authenticate-with-axp-apis).
 
    Note the application key that is created, as you will need to provide it when
    configuring the SDK as described below.
@@ -59,7 +60,8 @@ To download packages from the GitHub registry, you first need to generate an
 authentication token for your GitHub account.
 
 To generate one, follow the instructions from [Creating a personal access token
-(classic)][gh-token]. For the selected scopes, pick "read:packages".
+(classic)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic).
+For the selected scopes, pick "read:packages".
 
 #### Add Repository
 
@@ -123,7 +125,8 @@ Replace `${avayaSdkVersion}` with the latest version of the AXP SDK.
 ### Manual Installation
 
 If you don't have or wish to use a GitHub account, you can download the package
-manually from [its package page][package].
+manually from [its package
+page](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727).
 
 #### Include Package
 
@@ -152,7 +155,7 @@ Replace `${avayaSdkVersion}` with the version number of the AXP SDK and
 ## SDK Configuration
 
 Before using any SDK functionality, it needs to be configured using the
-`AxpClientSdk.configureSdk` method.
+`AxpOmniSdk.configureSdk` method.
 
 ### Configuration Parameters
 
@@ -175,7 +178,7 @@ Before using any SDK functionality, it needs to be configured using the
 Here's an example of SDK configuration for an application in North America:
 
 ```kotlin
-AxpClientSdk.configureSdk(
+AxpOmniSdk.configureSdk(
     applicationContext = context,
     host = AxpApiRegion.NORTH_AMERICA,
     appKey = MY_APP_KEY,
@@ -190,7 +193,7 @@ AxpClientSdk.configureSdk(
 
 ## Authentication
 
-The AXP Client SDK uses JSON Web Tokens (JWT) for client authentication. The JWT
+The AXP Omni SDK uses JSON Web Tokens (JWT) for client authentication. The JWT
 is obtained from your own web application that communicates with AXP's
 authentication API.
 
@@ -218,13 +221,13 @@ class MyJwtProvider : JwtProvider {
 ```
 
 Once you have implemented the `JwtProvider` interface, you pass an instance of
-your implementation to the `AxpClientSdk.configureSdk` method as part of the
+your implementation to the `AxpOmniSdk.configureSdk` method as part of the
 configuration process.
 
 ## Asynchronous Operation
 
 For every API call that involves asynchronous operation (such as making network
-requests to AXP), the AXP Client SDK provides two versions for Android:
+requests to AXP), the AXP Omni SDK provides two versions for Android:
 
 1. **Kotlin Coroutines**: These are operations that are defined as `suspend fun`
    in Kotlin. They are designed to be used from Kotlin coroutines for handling
@@ -246,7 +249,7 @@ with the `getDefaultConversation` method in the AXP SDK:
 
 ```kotlin
 launch {
-    when (val result = AxpClientSdk.getDefaultConversation()) {
+    when (val result = AxpOmniSdk.getDefaultConversation()) {
         is AxpResult.Success -> {
             // Handle success
             val conversation = result.value
@@ -262,7 +265,7 @@ launch {
 #### Using Async Callbacks
 
 ```kotlin
-AxpClientSdk.getDefaultConversation(object : ResponseHandler<Conversation> {
+AxpOmniSdk.getDefaultConversation(object : ResponseHandler<Conversation> {
     override fun onSuccess(result: Conversation) {
         // Handle success
     }
@@ -273,9 +276,9 @@ AxpClientSdk.getDefaultConversation(object : ResponseHandler<Conversation> {
 })
 ```
 
-## AxpClientSdk Methods
+## AxpOmniSdk Methods
 
-The AXP Client SDK provides the following class methods that apply to the SDK as
+The AXP Omni SDK provides the following class methods that apply to the SDK as
 a whole.
 
 ### Getting the Conversation
@@ -305,11 +308,6 @@ fun shutDown(responseHandler: ResponseHandler<Unit>)
 This method does not take any parameters. There is effectively no result value,
 but if there is an error it will be communicated via the `AxpResult` or
 `ResponseHandler`. Even if an error occurs, the SDK is terminated and can not be
-used afterwards.
+used afterward.
 
-# Package com.avaya.axp.client.sdk
-
-[omni-integration]: https://documentation.avaya.com/bundle/ExperiencePlatform_Administering_10/page/Creating_an_Omni_SDK_integration.html
-[axp-auth]: https://developers.avayacloud.com/avaya-experience-platform/docs/how-to-authenticate-with-axp-apis
-[gh-token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic
-[package]: https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727
+# Package com.avaya.axp.omni.sdk

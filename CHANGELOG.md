@@ -1,5 +1,10 @@
 # Change Log
 
+## v1.0.0 (July 22,2024)
+- Rename packaging from `com.avaya.axp.client` to `com.avaya.axp.omni`
+- Minor dependency updates
+- Localization updates
+
 ## v0.2.0 (July 9,2024)
 - Option to edit message before sending and before rendering in AXP Messaging UI module.
 - Option to edit image before sending in AXP Messaging UI module.

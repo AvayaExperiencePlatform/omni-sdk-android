@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is the AXP Client SDK sample calling application for Android. It
+This is the AXP Omni SDK sample calling application for Android. It
 demonstrates how to establish a voice call to an AXP agent queue with a very
 simple user interface.
 
@@ -41,7 +41,7 @@ The expected configuration received from the server is:
 * **appKey** is your application's key for using API Exchange Hub
 * **remoteAddress** the phone number on AXP to be called
 
-The first three values are passed into the AXP Client SDK at configuration time,
+The first three values are passed into the AXP Omni SDK at configuration time,
 and are further described in the documentation for the Core module. The remote
 address is used when the user presses the Call icon to start the call.
 

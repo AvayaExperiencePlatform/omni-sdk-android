@@ -1,16 +1,20 @@
 plugins {
-    id("com.android.application") version "8.3.2"
-    id("org.jetbrains.kotlin.android") version "1.9.22"
-    id("org.jetbrains.kotlin.plugin.parcelize") version "1.9.22"
-    id("com.google.devtools.ksp") version "1.9.22-1.0.18"
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.ksp)
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 android {
-    namespace = "com.avaya.axp.client.sample"
+    namespace = "com.avaya.axp.omni.sample.calling"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.avaya.axp.client.sample"
+        applicationId = "com.avaya.axp.omni.sample.calling"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -40,7 +44,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.9"
+        kotlinCompilerExtensionVersion = "1.5.13"
     }
     packaging {
         resources {
@@ -49,43 +53,40 @@ android {
     }
 }
 
-kotlin {
-    jvmToolchain(17)
-}
-
 dependencies {
-    implementation("com.avaya.axp.client.sdk:core:0.1.1")
-    implementation("com.avaya.axp.client.sdk:mpaas-calling:0.1.1")
-    implementation("com.avaya.axp.client.sdk:calling:0.1.1")
+    implementation("com.avaya.axp.omni.sdk:core:1.0.0")
+    implementation("com.avaya.axp.omni.sdk:mpaas-calling:1.0.0")
+    implementation("com.avaya.axp.omni.sdk:webrtc:1.0.0")
 
-    coreLibraryDesugaring(group = "com.android.tools", name = "desugar_jdk_libs", version = "2.0.4")
-    implementation(group = "androidx.core", name = "core-ktx", version = "1.13.1")
-    implementation(group = "androidx.datastore", name = "datastore-preferences", version = "1.1.1")
-    implementation(group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version = "2.7.0")
-    implementation(group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version = "2.7.0")
-    implementation(group = "androidx.core", name = "core-telecom", version = "1.0.0-alpha03")
+    coreLibraryDesugaring(libs.core.desugaring)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.telecom)
 
     // Compose
-    implementation(group = "com.google.accompanist", name = "accompanist-permissions", version = "0.34.0")
-    implementation(group = "androidx.activity", name = "activity-compose", version = "1.9.0")
-    implementation(group = "androidx.compose", name = "compose-bom", version = "2024.05.00")
-    implementation(group = "androidx.compose.ui", name = "ui")
-    implementation(group = "androidx.compose.ui", name = "ui-tooling-preview")
-    implementation(group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version = "2.7.0")
-    implementation(group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version = "2.7.0")
-    implementation(group = "com.google.android.material", name = "material", version = "1.12.0")
-    implementation(group = "androidx.compose.material3", name = "material3", version = "1.2.1")
-    implementation(group = "androidx.navigation", name = "navigation-compose", version = "2.7.7")
-    implementation(group = "androidx.compose.material", name = "material-icons-extended", version = "1.6.7")
-    debugImplementation(group = "androidx.compose.ui", name = "ui-test-manifest", version = "1.6.7")
-    debugImplementation(group = "androidx.compose.ui", name = "ui-tooling")
+    implementation(libs.accompanist.permissions)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.lifecycle.viewModelCompose)
+    implementation(libs.material)   // TODO: this should be removed once theming problem is resolved
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.lifecycle.viewModelCompose)
+    implementation(libs.compose.material.iconsext)
 
-    implementation(group = "com.squareup.moshi", name = "moshi", version = "1.15.1")
-    implementation(group = "com.squareup.moshi", name = "moshi-kotlin", version = "1.15.1")
-    ksp(group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version = "1.15.1")
-    implementation(group = "com.squareup.okhttp3", name = "okhttp", version = "4.12.0")
-    implementation(group = "com.squareup.okhttp3", name = "logging-interceptor", version = "4.12.0")
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
+    ksp(libs.moshi.codegen)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
 
-    implementation(group = "com.github.tony19", name = "logback-android", version = "3.0.0")
-    implementation(group = "org.slf4j", name = "slf4j-api", version = "2.0.13")
+    implementation(libs.logback.android)
+    implementation(libs.slf4j)
 }
