@@ -1,4 +1,3 @@
-
 pluginManagement {
     repositories {
         google {
@@ -24,4 +23,4 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AXP Client SDK Sample Messaging App"
+rootProject.name = "AXP Omni SDK Sample Messaging App"

@@ -1,24 +1,22 @@
 plugins {
-    id("com.android.application") version "8.3.2"
-    id("org.jetbrains.kotlin.android") version "1.9.22"
-    id("com.google.devtools.ksp") version "1.9.22-1.0.18"
-}
-val googleServicesFile = file("src/main/google-services.json")
-if (googleServicesFile.exists()) {
-    apply(plugin = "com.google.gms.google-services")
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "com.avaya.axp.client.sample_app_messaging"
+    namespace = "com.avaya.axp.omni.sample.messaging"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.avaya.axp.client.sample_app_messaging"
+        applicationId = "com.avaya.axp.omni.sample.messaging"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -46,7 +44,7 @@ android {
         buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.9"
+        kotlinCompilerExtensionVersion = "1.5.13"
     }
     packaging {
         resources {
@@ -56,46 +54,40 @@ android {
 }
 
 dependencies {
-    implementation("com.avaya.axp.client.sdk:core:0.1.1")
-    implementation("com.avaya.axp.client.sdk:messaging:0.1.1")
-    implementation("com.avaya.axp.client.sdk:messaging-ui:0.1.1")
+    implementation("com.avaya.axp.omni.sdk:core:1.0.0")
+    implementation("com.avaya.axp.omni.sdk:messaging:1.0.0")
+    implementation("com.avaya.axp.omni.sdk:messaging-ui:1.0.0")
 
-    implementation(group = "androidx.activity", name = "activity-compose", version = "1.9.0")
-    implementation(group = "androidx.compose.material", name = "material-icons-extended", version = "1.6.7")
-    implementation(group = "androidx.compose.material3", name = "material3", version = "1.2.1")
-    implementation(group = "androidx.compose.ui", name = "ui-graphics")
-    implementation(group = "androidx.compose.ui", name = "ui-tooling-preview")
-    implementation(group = "androidx.compose.ui", name = "ui")
-    implementation(group = "androidx.compose", name = "compose-bom", version = "2024.05.00")
-    implementation(group = "androidx.core", name = "core-ktx", version = "1.13.1")
-    implementation(group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version = "2.7.0")
-    implementation(group = "androidx.navigation", name = "navigation-compose", version = "2.7.7")
-    implementation(group = "androidx.work", name = "work-runtime-ktx", version = "2.9.0")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.material3)
 
-    implementation(group = "com.google.firebase", name = "firebase-common-ktx", version = "21.0.0")
-    implementation(group = "com.google.firebase", name = "firebase-bom", version = "33.0.0")
-    implementation(group = "com.google.firebase", name = "firebase-messaging", version = "24.0.0")
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
+    ksp(libs.moshi.codegen)
+    implementation(libs.okhttp.logging)
 
-    implementation(group = "com.google.code.gson", name = "gson", version = "2.10.1")
-    implementation(group = "com.squareup.moshi", name = "moshi", version = "1.15.1")
-    implementation(group = "com.squareup.moshi", name = "moshi-kotlin", version = "1.15.1")
-    ksp(group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version = "1.15.1")
-    implementation(group = "com.squareup.okhttp3", name = "logging-interceptor", version = "4.12.0")
-    implementation(group = "com.squareup.retrofit2", name = "retrofit", version = "2.11.0")
-    implementation(group = "com.squareup.retrofit2", name = "converter-moshi", version = "2.11.0")
+    implementation(libs.logback.android)
 
-    implementation(group = "com.github.tony19", name = "logback-android", version = "3.0.0")
-    implementation(group = "org.slf4j", name = "slf4j-api", version = "2.0.13")
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.compose.material.iconsext)
+    implementation(libs.okhttp.logging)
 
-    implementation( group = "androidx.appcompat", name = "appcompat", version = "1.6.1" )
-    implementation(group = "androidx.camera", name = "camera-core", version = "1.3.3")
-    implementation(group = "androidx.camera", name = "camera-camera2", version = "1.3.3")
-    implementation(group = "androidx.camera", name = "camera-lifecycle", version = "1.3.3")
-    implementation(group = "androidx.camera", name = "camera-view", version = "1.3.3")
-    implementation(group = "io.coil-kt", name = "coil-compose", version = "2.6.0")
-    implementation(group = "io.coil-kt", name = "coil-gif", version = "2.4.0")
-    implementation(group = "androidx.compose.runtime", name = "runtime-livedata")
+    implementation(libs.firebase.common.ktx)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.messaging)
+    implementation(libs.androidx.work)
 
-    debugImplementation(group = "androidx.compose.ui", name = "ui-tooling")
-    debugImplementation(group = "androidx.compose.ui", name = "ui-test-manifest", version = "1.6.7")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
 }

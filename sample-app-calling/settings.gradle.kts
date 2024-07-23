@@ -23,4 +23,4 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AXP Client SDK Sample Calling App"
+rootProject.name = "AXP Omni SDK Sample Calling App"

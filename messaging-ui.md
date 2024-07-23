@@ -1,6 +1,8 @@
-## Introduction
+# Module AXP Messaging UI
 
-Welcome to the Avaya Messaging UI SDK documentation. This SDK seamlessly integrates with the Avaya Messaging SDK, providing a highly customizable user interface for messaging screens while simplifying the integration of messaging operations into client applications. The Avaya Messaging UI SDK empowers developers to finely tailor the messaging interface, allowing customization of colors, strings, and typography to meet the specific visual requirements of your application.
+## Overview
+
+The AXP Messaging UI provides a highly customizable user interface for messaging screen. It simplifies the integration of messaging into your application including the handling of rich media and attachments. The AXP Messaging UI empowers developers to finely tailor the messaging interface, allowing customization of colors, strings, and typography to meet the specific visual requirements of your application.
 
 ## Features
 
@@ -29,7 +31,7 @@ Welcome to the Avaya Messaging UI SDK documentation. This SDK seamlessly integra
    Facilitate communication resilience by allowing users to retry sending messages that may have failed in previous attempts.
 
 9. **Attachments**
-   Enhance communication capabilities by enabling users to send attachments, either independently or with accompanying text messages, fostering a richer and more interactive messaging experience.
+   Enhance communication capabilities by enabling users to send attachments, either independently or with accompanying text messages, fostering a richer and more interactive messaging experience.  Enable auto download of attachments if required.
 
 10. **Live Message Display**
     Provide users with a real-time display of messages exchanged between customers and agents/bots, ensuring an up-to-the-moment view of the ongoing conversation.
@@ -85,7 +87,8 @@ To download packages from the GitHub registry, you first need to generate an
 authentication token for your GitHub account.
 
 To generate one, follow the instructions from [Creating a personal access token
-(classic)][gh-token]. For the selected scopes, pick "read:packages".
+(classic)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic).
+For the selected scopes, pick "read:packages".
 
 #### Add Repository
 
@@ -153,10 +156,14 @@ Replace `${avayaSdkVersion}` with the latest version of the AXP SDK.
 ### Manual Installation
 
 If you don't have or wish to use a GitHub account, you can download the package
-manually from [its package page][package].
+manually from [its package
+page](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2210111).
 
-You'll also need to download the [Core module][core-package]
-and [Messaging Module][messaging-package] that it depends on.
+You'll also need to download the [Core
+module](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2210109)
+and [Messaging
+Module](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2210110)
+that it depends on.
 
 #### Include Package
 
@@ -166,9 +173,9 @@ file:
 ```groovy
 // For Groovy
 dependencies {
-    implementation files('${path}/core-${avayaSdkVersion}.aar')
-    implementation files('${path}/messaging-${avayaSdkVersion}.aar')
-    implementation files('${path}/messaging-ui-${avayaSdkVersion}.aar')
+    implementation 'com.avaya.axp.omni.sdk:core:${avayaSdkVersion}'
+    implementation 'com.avaya.axp.omni.sdk:messaging:${avayaSdkVersion}'
+    implementation 'com.avaya.axp.omni.sdk:messaging-ui:${avayaSdkVersion}'
 }
 ```
 
@@ -177,9 +184,9 @@ or Kotlin `build.gradle.kts` file:
 ```kotlin
 // For Kotlin DSL
 dependencies {
-    implementation(files("${path}/core-${avayaSdkVersion}.jar.aar"))
-    implementation(files("${path}/messaging-${avayaSdkVersion}.jar.aar"))
-    implementation(files("${path}/messaging-ui-${avayaSdkVersion}.jar.aar"))
+    implementation("com.avaya.axp.omni.sdk:core:${avayaSdkVersion}")
+    implementation("com.avaya.axp.omni.sdk:messaging:${avayaSdkVersion}")
+    implementation("com.avaya.axp.omni.sdk:messaging-ui:${avayaSdkVersion}")
 }
 ```
 
@@ -188,10 +195,14 @@ Replace `${avayaSdkVersion}` with the version number of the AXP SDK and
 
 ## Getting Started with UI Customization and flags
 
-## AvayaMessagingUiSdk
-
 ### Flags:
 
+- `autoDownloadImages` :
+  Set this flag to true if you want to automatically download Images.
+- `autoDownloadMediaFiles` :
+  Set this flag to true if you want to automatically download Media Files.
+- `mediaSavePath` :
+  Directory path where you want to save downloaded media files or will be saved in Downloads folder.
 - `showAgentEvents` :
   Set this flag to true if you want to show the agent joined and left events in the messaging window.
 - `showAutomationEvents` :
@@ -202,9 +213,25 @@ Replace `${avayaSdkVersion}` with the version number of the AXP SDK and
   Set this flag to true if you want to show the active participants list in the messaging window.
 - `useBusinessAsParticipant` :
   Set this flag to true if you want to use business as a participant in the messaging window.
+- `showIdleTimeoutDialog` :
+  Set this flag to true if you want to show the idle timeout dialog in the messaging window when there is no activity from customer.
+- `imageCaptureEnabled` :
+  Set this flag to true if you want to support image capture through camera.
+- `videoCaptureEnabled` :
+  Set this flag to true if you want to support video capture through camera.
+- `audioRecordingEnabled` :
+  Set this flag to true if you want to support audio recording.
+- `fileSharingEnabled` :
+  Set this flag to true if you want to support file sharing.
+- `locationSharingEnabled` :
+  Set this flag to true if you want to support location sharing.
+- `compressImageBeforeSending` :
+  Set this flag to true if you want to compress the image before sending.
 
 ### Functions:
 
+- `init()`
+  starts observing idle timeout and events stream state / server connection state.
 - `setUiThemeLight()`
   Set the UI theme to light.
 - `setUiThemeDark()`
@@ -236,12 +263,19 @@ The `ConversationHandler` exposes essential properties and methods for developer
 
 - `getLocationDetails(onComplete:(LocationMessage?)->Unit)`: The app should fetch the location and call the `onComplete` method with the location details. If it fails to fetch the location details, it should call the `onComplete` method with `null`.
 - `getLocationUrl(latitude:Double?,longitude:Double?):String` : The app should provide the location URL using latitude and longitude. When clicked, the user will be directed to maps or a browser.
+- `GetLocationMapWidget(latitude: Double, longitude: Double)` : The app should provide a map widget for the given latitude and longitude. This will be displayed in the messaging window.
+- `requestPermissions(type: RequestedPermissionsType)` : This method is used to request the necessary permissions. It includes:
+    - Camera permission while opening the camera if not granted
+    - Audio record permission while recording audio/video if not granted
+    - Camera and audio permissions while recording video if not granted
+    - These can be empty if permissions are handled externally or if your app doesn't support the corresponding features.
+- `customParticipantName(participant: Participant):String?` : This method is used to get the custom participant name based on the participant type
+  This function will be given priority over custom string and other flags like 'useBusinessAsParticipant' and 'displayAgentName' if more than one are implemented at once
+- `fun beforeSendMessage(sendMessageModel:SendMessageModel):SendMessageModel` : This method is utilized to modify the message before it is sent, if the user needs to alter the original message.
+- `fun beforeRenderMessage(message: Message): Message` : This method is responsible for retrieving a custom message before it is displayed. The message is obtained from the server either through an event or as a response to a sent message.
 
 ### Show Messaging UI
 
-- To show the messaging UI, you can use the `ShowMessagingUI(conversationHandler: ConversationHandler)` composable function. You can pass the conversation handler object to this function and the UI for that conversation will be rendered on the Messaging screen.  
+To show the messaging UI, you can use the `ShowMessagingUI(conversationHandler: ConversationHandler)` composable function. You can pass the conversation handler object to this function and the UI for that conversation will be rendered on the Messaging screen.  
 
-[gh-token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic
-[package]: https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150733
-[core-package]: https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727
-[messaging-package]: https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150732
+# Package com.avaya.messaging_ui

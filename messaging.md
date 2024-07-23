@@ -11,10 +11,10 @@ closed after the participants disconnect the dialog.
 ## Prerequisites
 
 To use the Messaging module, you need an Omni SDK integration provisioned with
-the **Messaging** service enabled. Follow the instructions in
-[Creating an Omni SDK Integration][omni-integration] to set up an integration
-with messaging support and use the integration ID for configuring the SDK as
-described in the documentation for the Core module.
+the **Messaging** service enabled. Follow the instructions in [Creating an Omni SDK
+Integration](https://documentation.avaya.com/bundle/ExperiencePlatform_Administering_10/page/Creating_an_Omni_SDK_integration.html)
+to set up an integration with messaging support and use the integration ID for
+configuring the SDK as described in the documentation for the Core module.
 
 ## Installation
 
@@ -31,7 +31,8 @@ To download packages from the GitHub registry, you first need to generate an
 authentication token for your GitHub account.
 
 To generate one, follow the instructions from [Creating a personal access token
-(classic)][gh-token]. For the selected scopes, pick "read:packages".
+(classic)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic).
+For the selected scopes, pick "read:packages".
 
 #### Add Repository
 
@@ -97,9 +98,12 @@ Replace `${avayaSdkVersion}` with the latest version of the AXP SDK.
 ### Manual Installation
 
 If you don't have or wish to use a GitHub account, you can download the package
-manually from [its package page][package].
+manually from [its package
+page](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2210110).
 
-You'll also need to download the [Core module][core-package] that it depends on.
+You'll also need to download the [Core
+module](https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2210109)
+that it depends on.
 
 #### Include Package
 
@@ -109,8 +113,8 @@ file:
 ```groovy
 // For Groovy
 dependencies {
-    implementation files('${path}/core-${avayaSdkVersion}.aar')
-    implementation files('${path}/messaging-${avayaSdkVersion}.aar')
+    implementation 'com.avaya.axp.omni.sdk:core:${avayaSdkVersion}'
+    implementation 'com.avaya.axp.omni.sdk:messaging:${avayaSdkVersion}'
 }
 ```
 
@@ -119,8 +123,8 @@ or Kotlin `build.gradle.kts` file:
 ```kotlin
 // For Kotlin DSL
 dependencies {
-    implementation(files("${path}/core-${avayaSdkVersion}.jar.aar"))
-    implementation(files("${path}/messaging-${avayaSdkVersion}.jar.aar"))
+    implementation("com.avaya.axp.omni.sdk:core:${avayaSdkVersion}")
+    implementation("com.avaya.axp.omni.sdk:messaging:${avayaSdkVersion}")
 }
 ```
 
@@ -132,13 +136,13 @@ Replace `${avayaSdkVersion}` with the version number of the AXP SDK and
 ### Conversation
 
 Before you can send a message, you need a valid `Conversation`. You can obtain
-this by calling `AxpClientSdk.getDefaultConversation()` from the AXP Core module.
+this by calling `AxpOmniSdk.getDefaultConversation()` from the AXP Core module.
 
 Here's an example of getting the default conversation:
 
 ```kotlin
 launch {
-    when (val result = AxpClientSdk.getDefaultConversation()) {
+    when (val result = AxpOmniSdk.getDefaultConversation()) {
         is AxpResult.Success -> {
             val defaultConversation = result
             // Use the userSession to send a message
@@ -304,9 +308,4 @@ To access participants that are only related to messaging, you can get them by
 val messagingParticipants = conversation.participants(AxpChannel.MESSAGING)
 ```
 
-# Package com.avaya.axp.client.sdk.messaging
-
-[omni-integration]: https://documentation.avaya.com/bundle/ExperiencePlatform_Administering_10/page/Creating_an_Omni_SDK_integration.html
-[gh-token]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic
-[package]: https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150732
-[core-package]: https://github.com/AvayaExperiencePlatform/omni-sdk-android/packages/2150727
+# Package com.avaya.axp.omni.sdk.messaging

@@ -237,7 +237,7 @@ $dokka.location:com.avaya.messaging_ui.model/DispatchersProvider///PointingToDec
 $dokka.location:com.avaya.messaging_ui.model/DispatchersProvider/io/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui.model/-dispatchers-provider/io.html
 $dokka.location:com.avaya.messaging_ui.model/DispatchersProvider/main/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui.model/-dispatchers-provider/main.html
 $dokka.location:com.avaya.messaging_ui.model/SendMessageModel///PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui.model/-send-message-model/index.html
-$dokka.location:com.avaya.messaging_ui.model/SendMessageModel/SendMessageModel/#kotlin.String?#com.avaya.axp.client.sdk.messaging.MessageBody?/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui.model/-send-message-model/-send-message-model.html
+$dokka.location:com.avaya.messaging_ui.model/SendMessageModel/SendMessageModel/#kotlin.String?#com.avaya.axp.omni.sdk.messaging.MessageBody?/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui.model/-send-message-model/-send-message-model.html
 $dokka.location:com.avaya.messaging_ui.model/SendMessageModel/messageBody/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui.model/-send-message-model/message-body.html
 $dokka.location:com.avaya.messaging_ui.model/SendMessageModel/text/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui.model/-send-message-model/text.html
 $dokka.location:com.avaya.messaging_ui.screen////PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui.screen/index.html
@@ -295,7 +295,7 @@ $dokka.location:com.avaya.messaging_ui/AvayaMessagingUiSDK/autoDownloadImages/#/
 $dokka.location:com.avaya.messaging_ui/AvayaMessagingUiSDK/autoDownloadMediaFiles/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-avaya-messaging-ui-s-d-k/auto-download-media-files.html
 $dokka.location:com.avaya.messaging_ui/AvayaMessagingUiSDK/compressImageBeforeSending/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-avaya-messaging-ui-s-d-k/compress-image-before-sending.html
 $dokka.location:com.avaya.messaging_ui/AvayaMessagingUiSDK/fileSharingEnabled/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-avaya-messaging-ui-s-d-k/file-sharing-enabled.html
-$dokka.location:com.avaya.messaging_ui/AvayaMessagingUiSDK/getConversationHandler/#com.avaya.axp.client.sdk.core.Conversation#android.content.Context?/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-avaya-messaging-ui-s-d-k/get-conversation-handler.html
+$dokka.location:com.avaya.messaging_ui/AvayaMessagingUiSDK/getConversationHandler/#com.avaya.axp.omni.sdk.core.Conversation#android.content.Context?/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-avaya-messaging-ui-s-d-k/get-conversation-handler.html
 $dokka.location:com.avaya.messaging_ui/AvayaMessagingUiSDK/imageCaptureEnabled/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-avaya-messaging-ui-s-d-k/image-capture-enabled.html
 $dokka.location:com.avaya.messaging_ui/AvayaMessagingUiSDK/init/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-avaya-messaging-ui-s-d-k/init.html
 $dokka.location:com.avaya.messaging_ui/AvayaMessagingUiSDK/isSupportedLocale/#java.util.Locale/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-avaya-messaging-ui-s-d-k/is-supported-locale.html
@@ -316,7 +316,7 @@ $dokka.location:com.avaya.messaging_ui/AvayaMessagingUiSDK/supportedLocales/#/Po
 $dokka.location:com.avaya.messaging_ui/AvayaMessagingUiSDK/useBusinessAsParticipant/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-avaya-messaging-ui-s-d-k/use-business-as-participant.html
 $dokka.location:com.avaya.messaging_ui/AvayaMessagingUiSDK/videoCaptureEnabled/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-avaya-messaging-ui-s-d-k/video-capture-enabled.html
 $dokka.location:com.avaya.messaging_ui/ConversationHandler///PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-conversation-handler/index.html
-$dokka.location:com.avaya.messaging_ui/ConversationHandler/ConversationHandler/#com.avaya.axp.client.sdk.core.Conversation#android.content.Context?/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-conversation-handler/-conversation-handler.html
+$dokka.location:com.avaya.messaging_ui/ConversationHandler/ConversationHandler/#com.avaya.axp.omni.sdk.core.Conversation#android.content.Context?/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-conversation-handler/-conversation-handler.html
 $dokka.location:com.avaya.messaging_ui/ConversationHandler/context/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-conversation-handler/context.html
 $dokka.location:com.avaya.messaging_ui/ConversationHandler/conversation/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-conversation-handler/conversation.html
 $dokka.location:com.avaya.messaging_ui/ConversationHandler/hasNewEvent/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-conversation-handler/has-new-event.html
@@ -324,10 +324,10 @@ $dokka.location:com.avaya.messaging_ui/ConversationHandler/newEventRead/#/Pointi
 $dokka.location:com.avaya.messaging_ui/ConversationHandler/pageSize/#/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-conversation-handler/page-size.html
 $dokka.location:com.avaya.messaging_ui/UiEventHandler///PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-ui-event-handler/index.html
 $dokka.location:com.avaya.messaging_ui/UiEventHandler/GetLocationMapWidget/#kotlin.Double#kotlin.Double/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-ui-event-handler/-get-location-map-widget.html
-$dokka.location:com.avaya.messaging_ui/UiEventHandler/beforeRenderMessage/#com.avaya.axp.client.sdk.messaging.Message/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-ui-event-handler/before-render-message.html
+$dokka.location:com.avaya.messaging_ui/UiEventHandler/beforeRenderMessage/#com.avaya.axp.omni.sdk.messaging.Message/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-ui-event-handler/before-render-message.html
 $dokka.location:com.avaya.messaging_ui/UiEventHandler/beforeSendMessage/#com.avaya.messaging_ui.model.SendMessageModel/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-ui-event-handler/before-send-message.html
-$dokka.location:com.avaya.messaging_ui/UiEventHandler/customParticipantName/#com.avaya.axp.client.sdk.core.Participant/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-ui-event-handler/custom-participant-name.html
-$dokka.location:com.avaya.messaging_ui/UiEventHandler/getLocationDetails/#kotlin.Function1[com.avaya.axp.client.sdk.messaging.LocationMessage?,kotlin.Unit]/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-ui-event-handler/get-location-details.html
+$dokka.location:com.avaya.messaging_ui/UiEventHandler/customParticipantName/#com.avaya.axp.omni.sdk.core.Participant/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-ui-event-handler/custom-participant-name.html
+$dokka.location:com.avaya.messaging_ui/UiEventHandler/getLocationDetails/#kotlin.Function1[com.avaya.axp.omni.sdk.messaging.LocationMessage?,kotlin.Unit]/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-ui-event-handler/get-location-details.html
 $dokka.location:com.avaya.messaging_ui/UiEventHandler/getLocationUrl/#kotlin.Double?#kotlin.Double?/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-ui-event-handler/get-location-url.html
 $dokka.location:com.avaya.messaging_ui/UiEventHandler/requestPermissions/#com.avaya.messaging_ui.util.RequestedPermissionsType/PointingToDeclaration/-a-x-p -messaging -u-i/com.avaya.messaging_ui/-ui-event-handler/request-permissions.html
 com.avaya.messaging_ui
