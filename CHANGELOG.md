@@ -1,5 +1,8 @@
 # Change Log
 
+## v1.0.1 
+- Typing indicator from agent to customer added
+
 ## v1.0.0 (July 22,2024)
 
 - Rename packaging from `com.avaya.axp.client` to `com.avaya.axp.omni`
