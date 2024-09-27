@@ -327,13 +327,15 @@ or
 ```kotlin
 // Using flow
 conversation.typingParticipantsFlow.collect { typingParticipants ->
-    // You can now use the set of participants who are typing
+    // You can now use the set of participants who are typing.
+	// Empty set indicates no participant is typing.
 }
 ```
 
 ### Send typing status
 
 You can send typing status to the conversation by calling the `notifyUserTyping()` method whenever user is typing.
+Rate limiting is handled by messaging sdk, hence this function can be called on every keystroke.
 
 ```kotlin
 conversation.notifyUserTyping() // call this method when user is typing

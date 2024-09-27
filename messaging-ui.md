@@ -49,7 +49,7 @@ The AXP Messaging UI provides a highly customizable user interface for messaging
     Users can edit images before sending them where they can crop, flip and rotate Images, providing a more interactive and personalized messaging experience.
 
 15. **Typing Indicator**
-    Display a typing indicator when the other participant is typing, providing real-time feedback on the conversation status.
+    Display a typing indicator when the remote participant is typing, providing real-time feedback on the conversation status.
 
 ## Customization Options in Avaya Messaging UI SDK
 
