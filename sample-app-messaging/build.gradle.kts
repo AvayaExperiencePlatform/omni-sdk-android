@@ -54,9 +54,9 @@ android {
 }
 
 dependencies {
-    implementation("com.avaya.axp.omni.sdk:core:1.0.0")
-    implementation("com.avaya.axp.omni.sdk:messaging:1.0.0")
-    implementation("com.avaya.axp.omni.sdk:messaging-ui:1.0.0")
+    implementation("com.avaya.axp.omni.sdk:core:1.1.0")
+    implementation("com.avaya.axp.omni.sdk:messaging:1.1.0")
+    implementation("com.avaya.axp.omni.sdk:messaging-ui:1.1.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

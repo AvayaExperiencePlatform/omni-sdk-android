@@ -54,9 +54,9 @@ android {
 }
 
 dependencies {
-    implementation("com.avaya.axp.omni.sdk:core:1.0.0")
-    implementation("com.avaya.axp.omni.sdk:mpaas-calling:1.0.0")
-    implementation("com.avaya.axp.omni.sdk:calling:1.0.0")
+    implementation("com.avaya.axp.omni.sdk:core:1.1.0")
+    implementation("com.avaya.axp.omni.sdk:mpaas-calling:1.1.0")
+    implementation("com.avaya.axp.omni.sdk:calling:1.1.0")
 
     coreLibraryDesugaring(libs.core.desugaring)
     implementation(libs.androidx.core.ktx)
