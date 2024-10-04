@@ -327,8 +327,8 @@ or
 ```kotlin
 // Using flow
 conversation.typingParticipantsFlow.collect { typingParticipants ->
-    // You can now use the set of participants who are typing.
-	// Empty set indicates no participant is typing.
+    // You can now use the set of participants who are typing
+    // Empty set indicates no participant is typing.
 }
 ```
 

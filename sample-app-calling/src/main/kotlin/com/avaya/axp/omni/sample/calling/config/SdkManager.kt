@@ -143,10 +143,10 @@ class SdkManager(
             _errorFlow.emit(null)
             val response = api.queryTokenService()
             configDataSource.saveSdkConfigData(
-                response.axpHostName,
-                response.axpIntegrationId,
-                response.appKey,
-                response.callingRemoteAddress
+                hostname = response.axpHostName,
+                integrationId = response.axpIntegrationId,
+                appKey = response.appKey,
+                remoteAddress = response.callingRemoteAddress
             )
             true
         } catch (re: RuntimeException) {
@@ -165,6 +165,7 @@ class SdkManager(
             configData.tokenServerUrl,
             configData.userId,
             configData.userName,
+            configData.emailAddress,
             configData.verifiedCustomer
         ).also {
             configApi = it

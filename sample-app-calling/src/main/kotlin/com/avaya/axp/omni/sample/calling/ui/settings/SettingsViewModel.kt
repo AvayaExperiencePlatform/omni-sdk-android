@@ -28,12 +28,19 @@ class SettingsViewModel : ViewModel() {
                 initialValue = Loading
             )
 
-    fun saveSettings(tokenServerUrl: String, userId: String, userName: String, verified: Boolean) {
+    fun saveSettings(
+        tokenServerUrl: String,
+        userId: String,
+        userName: String,
+        emailAddress: String,
+        verified: Boolean
+    ) {
         viewModelScope.launch {
             configDataSource.saveSettingsData(
                 tokenServerUrl = tokenServerUrl.trim(),
                 userId = userId.trim(),
                 userName = userName.trim(),
+                emailAddress = emailAddress.trim(),
                 verifiedCustomer = verified
             )
         }
@@ -46,16 +53,18 @@ class SettingsViewModel : ViewModel() {
  */
 data class SettingsData(
     val tokenServerUrl: String,
-    val userId: String,
     val userName: String,
+    val userId: String,
+    val emailAddress: String,
     val verifiedCustomer: Boolean
 )
 
 private val ConfigData.asSettingsData: SettingsData
     get() = SettingsData(
         tokenServerUrl = tokenServerUrl,
-        userId = userId,
         userName = userName,
+        userId = userId,
+        emailAddress = emailAddress,
         verifiedCustomer = verifiedCustomer
     )
 

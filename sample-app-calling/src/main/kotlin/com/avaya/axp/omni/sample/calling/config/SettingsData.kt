@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.map
 private val TOKEN_SERVER_URL_KEY = stringPreferencesKey("token_server_URL")
 private val USER_ID_KEY = stringPreferencesKey("user_ID")
 private val USER_NAME_KEY = stringPreferencesKey("user_name")
+private val EMAIL_ADDRESS_KEY = stringPreferencesKey("email_address_key")
 private val VERIFIED_CUSTOMER_KEY = booleanPreferencesKey("verified_customer")
 private val HOSTNAME_KEY = stringPreferencesKey("AXP_hostname")
 private val INTEGRATION_ID_KEY = stringPreferencesKey("integration_ID")
@@ -33,6 +34,9 @@ data class ConfigData(
 
     /** The user's display name. */
     val userName: String = "",
+
+    /** The user's email address. */
+    val emailAddress: String = "",
 
     /**
      * Indicates if the end-customer has been verified and the customer name and
@@ -80,14 +84,15 @@ class ConfigDataSource(
     /** Flow for the entire set of config data. */
     val configDataFlow: Flow<ConfigData> = dataStore.data.map { preferences ->
         ConfigData(
-            preferences[TOKEN_SERVER_URL_KEY] ?: "",
-            preferences[USER_ID_KEY] ?: "",
-            preferences[USER_NAME_KEY] ?: "",
-            preferences[VERIFIED_CUSTOMER_KEY] ?: false,
-            preferences[HOSTNAME_KEY] ?: "",
-            preferences[INTEGRATION_ID_KEY] ?: "",
-            preferences[APP_KEY_KEY] ?: "",
-            preferences[REMOTE_ADDRESS_KEY] ?: ""
+            tokenServerUrl = preferences[TOKEN_SERVER_URL_KEY] ?: "",
+            userId = preferences[USER_ID_KEY] ?: "",
+            userName = preferences[USER_NAME_KEY] ?: "",
+            emailAddress = preferences[EMAIL_ADDRESS_KEY] ?: "",
+            verifiedCustomer = preferences[VERIFIED_CUSTOMER_KEY] ?: false,
+            hostname = preferences[HOSTNAME_KEY] ?: "",
+            integrationId = preferences[INTEGRATION_ID_KEY] ?: "",
+            appKey = preferences[APP_KEY_KEY] ?: "",
+            remoteAddress = preferences[REMOTE_ADDRESS_KEY] ?: ""
         )
     }
 
@@ -103,12 +108,14 @@ class ConfigDataSource(
         tokenServerUrl: String,
         userId: String,
         userName: String,
+        emailAddress: String,
         verifiedCustomer: Boolean
     ) {
         dataStore.edit { preferences ->
             preferences[TOKEN_SERVER_URL_KEY] = tokenServerUrl
             preferences[USER_ID_KEY] = userId
             preferences[USER_NAME_KEY] = userName
+            preferences[EMAIL_ADDRESS_KEY] = emailAddress
             preferences[VERIFIED_CUSTOMER_KEY] = verifiedCustomer
         }
     }

@@ -8,7 +8,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
@@ -54,11 +56,12 @@ fun SettingsScreen(
         SettingsContent(
             padding = padding,
             settingsUiState = settingsUiState,
-            onSave = { tokenServerUrl, userId, userName, verifiedCustomer ->
+            onSave = { tokenServerUrl, userId, userName, emailAddress, verifiedCustomer ->
                 settingsViewModel.saveSettings(
                     tokenServerUrl = tokenServerUrl,
                     userId = userId,
                     userName = userName,
+                    emailAddress = emailAddress,
                     verified = verifiedCustomer
                 )
             }
@@ -74,12 +77,14 @@ private fun SettingsContent(
         tokenServerUrl: String,
         userId: String,
         userName: String,
-        verifiedCustomer: Boolean
+        emailAddress: String,
+        verifiedCustomer: Boolean,
     ) -> Unit
 ) {
     Column(
         Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .padding(padding)
     ) {
         when (settingsUiState) {
@@ -94,8 +99,9 @@ private fun SettingsContent(
                 val settingsData = settingsUiState.settingsData
 
                 val serverUrl = remember { mutableStateOf(settingsData.tokenServerUrl) }
-                val userId = remember { mutableStateOf(settingsData.userId) }
                 val userName = remember { mutableStateOf(settingsData.userName) }
+                val userId = remember { mutableStateOf(settingsData.userId) }
+                val emailAddress = remember { mutableStateOf(settingsData.emailAddress) }
                 val verifiedState = remember { mutableStateOf(settingsData.verifiedCustomer) }
 
                 OutlinedTextField(
@@ -114,6 +120,15 @@ private fun SettingsContent(
                     modifier = Modifier
                         .fillMaxWidth(),
                     singleLine = true,
+                    value = userName.value,
+                    label = { Text(stringResource(R.string.display_name)) },
+                    onValueChange = { userName.value = it }
+                )
+                Spacer(modifier = Modifier.padding(8.dp))
+                OutlinedTextField(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    singleLine = true,
                     value = userId.value,
                     label = { Text(stringResource(R.string.user_id)) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
@@ -124,11 +139,12 @@ private fun SettingsContent(
                     modifier = Modifier
                         .fillMaxWidth(),
                     singleLine = true,
-                    value = userName.value,
-                    label = { Text(stringResource(R.string.user_name)) },
-                    onValueChange = { userName.value = it }
+                    value = emailAddress.value,
+                    label = { Text(stringResource(R.string.email_address)) },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+                    onValueChange = { emailAddress.value = it }
                 )
-                Spacer(modifier = Modifier.padding(8.dp))
+                Spacer(modifier = Modifier.padding(4.dp))
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -147,7 +163,13 @@ private fun SettingsContent(
                         .fillMaxWidth(0.5F)
                         .align(Alignment.CenterHorizontally),
                     onClick = {
-                        onSave(serverUrl.value, userId.value, userName.value, verifiedState.value)
+                        onSave(
+                            serverUrl.value.trim(),
+                            userId.value,
+                            userName.value,
+                            emailAddress.value,
+                            verifiedState.value
+                        )
                     }
                 ) {
                     Text(text = stringResource(R.string.save))
@@ -190,11 +212,13 @@ fun SettingsScreenPreview() {
             settingsUiState = Success(
                 SettingsData(
                     tokenServerUrl = "https://token-server.example.com",
-                    userId = "caller-321@example.com",
                     userName = "Caller 321",
+                    userId = "caller-321",
+                    emailAddress = "caller-321@example.com",
                     verifiedCustomer = true
                 )
-            )
-        ) { _, _, _, _ -> }
+            ),
+            onSave = { _, _, _, _, _ -> }
+        )
     }
 }

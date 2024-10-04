@@ -33,11 +33,12 @@ import androidx.core.app.ActivityCompat
 import androidx.navigation.NavController
 import com.avaya.axp.omni.sample.messaging.R
 import com.avaya.axp.omni.sample.messaging.navigation.Screens
-import com.avaya.axp.omni.sample.messaging.network.provideNotificationService
+import com.avaya.axp.omni.sample.messaging.network.NotificationRegistrationService
 import com.avaya.axp.omni.sample.messaging.repository.NotificationRegistrationRepositoryImpl
 import com.avaya.axp.omni.sample.messaging.ui.LoadingLayout
 import com.avaya.axp.omni.sample.messaging.ui.theme.AXPOmniSDKForAndroidTheme
 import com.avaya.axp.omni.sample.messaging.util.AXP_CONFIG_ID
+import com.avaya.axp.omni.sample.messaging.util.FCM_CONNECTOR_BASE_URL
 import com.avaya.axp.omni.sample.messaging.viewmodel.MessagingSdkViewModel
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.CoroutineScope
@@ -77,7 +78,8 @@ fun HomeScreen(messagingSdkViewModel: MessagingSdkViewModel, navController: NavC
                                 saveDeviceRegistration(sessionId)
                                 navController.navigate(Screens.MessagingScreen.route)
                             } else {
-                                Toast.makeText(context, "something went wrong", Toast.LENGTH_LONG).show()
+                                Toast.makeText(context, "something went wrong", Toast.LENGTH_LONG)
+                                    .show()
                             }
                         }
                     }
@@ -136,7 +138,9 @@ fun Activity.requestNotificationPermission() {
 }
 
 fun saveDeviceRegistration(sessionId: String) {
-    val repository = NotificationRegistrationRepositoryImpl(provideNotificationService())
+    val repository = NotificationRegistrationRepositoryImpl(
+        NotificationRegistrationService.create(FCM_CONNECTOR_BASE_URL)
+    )
     CoroutineScope(Dispatchers.IO).launch {
         val token = getDeviceToken()
         Log.d("saveDeviceRegistration", "token = $token")

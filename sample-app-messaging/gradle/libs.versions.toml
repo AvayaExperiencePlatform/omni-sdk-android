@@ -1,16 +1,16 @@
 [versions]
-agp = "8.5.0"
-kotlin = "1.9.23"
-kotlin-coroutines = "1.8.1"
-kotlin-ksp = "1.9.23-1.0.20"
+agp = "8.6.1"
+kotlin = "2.0.20"
+kotlin-coroutines = "1.9.0"
+kotlin-ksp = "2.0.20-1.0.25"
 core-ktx = "1.13.1"
 core-splashscreen = "1.0.1"
-desugar = "2.0.4"
+desugar = "2.1.2"
 jacoco = "0.8.12"
 junit4 = "4.13.2"
-junit5 = "5.10.3"
-mockito = "5.12.0"
-mockito-kotlin = "5.3.1"
+junit5 = "5.11.0"
+mockito = "5.13.0"
+mockito-kotlin = "5.4.0"
 androidx-test-core = "1.6.1"
 androidx-test-ext-junit = "1.2.1"
 espresso-core = "3.6.1"
@@ -20,41 +20,36 @@ okhttp = "4.12.0"
 playServicesLocation = "21.3.0"
 retrofit = "2.11.0"
 moshi = "1.15.1"
-openapi = "7.4.0"
-slf4j = "2.0.13"
+openapi = "7.8.0"
+slf4j = "2.0.16"
 live-event = "1.3.0"
 webrtc = "118.0.0"
-activityCompose = "1.9.0"
-composeBom = "2024.06.00"
-androidx-navigation = "2.7.7"
-lifecycle = "2.8.2"
-androidx-work = "2.9.0"
-accompanist = "0.34.0"
+activityCompose = "1.9.2"
+composeBom = "2024.09.02"
+androidx-navigation = "2.8.1"
+lifecycle = "2.8.6"
+androidx-work = "2.9.1"
+accompanist = "0.36.0"
 datastorePreferences = "1.1.1"
 telecom = "1.0.0-alpha03"
 logback = "3.0.0"
 dokka = "1.9.20"
-coilGif = "2.6.0"
-coilCompose = "2.6.0"
-systemuicontroller = "0.34.0"
+coilGif = "2.7.0"
+coilCompose = "2.7.0"
+systemuicontroller = "0.36.0"
 gson = "2.11.0"
-code-gson = "2.11.0"
-firebase-bom = "33.1.1"
-firebase-common = "21.0.0"
-firebase-messaging = "24.0.0"
+firebase-bom = "33.3.0"
 google-services = "4.4.2"
-kotlin-kapt = "1.9.23"
-androidx-runner = "1.6.1"
-robolectric = "4.12.2"
-android-junit5 = "1.10.0.0"
+androidx-runner = "1.6.2"
+robolectric = "4.13"
+android-junit5 = "1.11.0.0"
 test-rules= "1.6.1"
-mockk = "1.13.11"
-guava = "33.2.1-jre"
+mockk = "1.13.12"
 camerax = "1.3.4"
 androidx-archive-core = "2.2.0"
 sonar-qube = "5.1.0.4882"
 
-hilt = "2.51.1"
+hilt = "2.52"
 hiltNavigationCompose = "1.2.0"
 
 [libraries]
@@ -90,8 +85,8 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 compose-material-iconsext = { group = "androidx.compose.material", name = "material-icons-extended" }
 core-desugaring = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugar" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase-bom" }
-firebase-common-ktx = { group = "com.google.firebase", name = "firebase-common-ktx", version.ref = "firebase-common" }
-firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebase-messaging" }
+firebase-common-ktx = { group = "com.google.firebase", name = "firebase-common-ktx" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 # Java/Kotlin Libraries
@@ -119,8 +114,6 @@ kotlin-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-c
 live-event = { group = "com.github.hadilq", name = "live-event", version.ref = "live-event" }
 logback-android = { group = "com.github.tony19", name = "logback-android", version.ref = "logback" }
 webrtc = { group = "org.jitsi", name = "webrtc", version.ref = "webrtc" }
-google-guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
-google-code-gson = { group = "com.google.code.gson", name = "gson", version.ref = "code-gson" }
 camera-core = { group = "androidx.camera", name = "camera-core", version.ref = "camerax" }
 camera-camera2 = { group = "androidx.camera", name = "camera-camera2", version.ref = "camerax" }
 camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "camerax" }
@@ -153,9 +146,9 @@ jacoco = { group = "org.jacoco", name = "org.jacoco.ant", version.ref = "jacoco"
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidDocumentationPlugin = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin-kapt" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "kotlin-ksp" }

@@ -11,7 +11,7 @@ const val LATITUDE = "-18.516634"
 const val LONGITUDE = "73.928104"
 const val ADDRESS = "San Francisco, CA, USA"
 const val AXP_CONFIG_ID = "<push-config-id>"
-const val NOTIFICATION_BASE_URL = "<push-notification-connector-url>"
+const val FCM_CONNECTOR_BASE_URL = "<push-notification-connector-url>"
 
 /**
  * Notification constants*/
