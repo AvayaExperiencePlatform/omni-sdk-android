@@ -48,6 +48,9 @@ The AXP Messaging UI provides a highly customizable user interface for messaging
 14. **Edit Images Before Sending**
     Users can edit images before sending them where they can crop, flip and rotate Images, providing a more interactive and personalized messaging experience.
 
+15. **Typing Indicator**
+    Display a typing indicator when the remote participant is typing, providing real-time feedback on the conversation status.
+
 ## Customization Options in Avaya Messaging UI SDK
 
 The Avaya Messaging UI SDK empowers developers with robust customization features, allowing seamless integration of the UI with the branding and design aesthetics of their applications. To tailor the UI to your specific preferences, the SDK introduces the concept of MessagingThemeConfig, an object that plays a pivotal role in configuring the UI's visual elements.
@@ -208,7 +211,7 @@ Replace `${avayaSdkVersion}` with the version number of the AXP SDK and
 - `showAutomationEvents` :
   Set this flag to true if you want to show the automation joined and left events in the messaging window.
 - `showAgentName` :
-  Set this flag to true if you want to show the agent name in the messaging window.
+  Set this flag to true if you want to show the static name for agent in place of display name. This flag will be true by default.
 - `showActiveParticipants` :
   Set this flag to true if you want to show the active participants list in the messaging window.
 - `useBusinessAsParticipant` :
@@ -227,6 +230,12 @@ Replace `${avayaSdkVersion}` with the version number of the AXP SDK and
   Set this flag to true if you want to support location sharing.
 - `compressImageBeforeSending` :
   Set this flag to true if you want to compress the image before sending.
+- `typingIndicatorEnabled` :
+  Controls the visibility of the typing indicator in the messaging window. The default value is `true`.
+- `showTypingParticipantAvatar` :
+  Controls the avatar of the participant is shown in the typing indicator. The default value is `true`.
+- `showTypingParticipantName` :
+  Controls the display name of the participant is shown in the typing indicator. The default value is `true`.
 
 ### Functions:
 

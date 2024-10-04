@@ -243,12 +243,12 @@ fun LoadingDialog(isDisplayed: Boolean) {
 
 @Composable
 private fun PermissionRationaleDialog(
-    showRationalDialog: MutableState<Boolean>
+    showRationaleDialog: MutableState<Boolean>
 ) {
     val context = LocalContext.current
     AlertDialog(
         onDismissRequest = {
-            showRationalDialog.value = false
+            showRationaleDialog.value = false
         },
         title = {
             Text(
@@ -261,12 +261,11 @@ private fun PermissionRationaleDialog(
         confirmButton = {
             TextButton(
                 onClick = {
-                    showRationalDialog.value = false
+                    showRationaleDialog.value = false
                     val intent = Intent(
                         Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                         Uri.fromParts("package", context.packageName, null)
-                    )
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(context, intent, null)
 
                 }) {
@@ -276,7 +275,7 @@ private fun PermissionRationaleDialog(
         dismissButton = {
             TextButton(
                 onClick = {
-                    showRationalDialog.value = false
+                    showRationaleDialog.value = false
                 }) {
                 Text(text = stringResource(R.string.cancel))
             }

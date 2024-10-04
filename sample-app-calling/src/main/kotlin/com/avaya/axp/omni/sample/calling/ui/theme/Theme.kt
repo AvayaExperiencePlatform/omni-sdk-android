@@ -78,6 +78,7 @@ private val LightColorScheme = lightColorScheme(
     outlineVariant = md_theme_light_outlineVariant,
     scrim = md_theme_light_scrim,
 )
+
 @Composable
 fun SampleTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),

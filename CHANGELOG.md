@@ -1,5 +1,8 @@
 # Change Log
 
+## v1.1.0 (September 30, 2024)
+- Added typing notification feature in Messaging and Messaging UI module.
+
 ## v1.0.0 (July 22,2024)
 
 - Rename packaging from `com.avaya.axp.client` to `com.avaya.axp.omni`

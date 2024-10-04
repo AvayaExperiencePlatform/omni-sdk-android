@@ -31,6 +31,7 @@ class TokenServiceClient(
     tokenProviderUrl: String,
     userId: String,
     userName: String? = null,
+    emailAddress: String? = null,
     verifiedCustomer: Boolean? = null
 ) : JwtProvider, ConfigApi {
 
@@ -41,7 +42,9 @@ class TokenServiceClient(
     private val tokenRequest = TokenRequest(
         userId = userId,
         userName = userName,
-        verifiedCustomer = verifiedCustomer
+        verifiedCustomer = verifiedCustomer,
+        userIdentifiers = emailAddress?.takeIf { it.isNotBlank() }
+            ?.let { UserIdentifiers(emailAddresses = listOf(it)) }
     )
 
     override suspend fun queryTokenService(): TokenResponse =

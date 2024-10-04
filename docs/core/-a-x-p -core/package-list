@@ -74,6 +74,7 @@ $dokka.location:com.avaya.axp.omni.sdk.core/Conversation/removeParticipantsChang
 $dokka.location:com.avaya.axp.omni.sdk.core/Conversation/session/#/PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-conversation/session.html
 $dokka.location:com.avaya.axp.omni.sdk.core/ConversationId///PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-conversation-id/index.html
 $dokka.location:com.avaya.axp.omni.sdk.core/DialogId///PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-dialog-id/index.html
+$dokka.location:com.avaya.axp.omni.sdk.core/DialogNotFound///PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-dialog-not-found/index.html
 $dokka.location:com.avaya.axp.omni.sdk.core/EngagementId///PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-engagement-id/index.html
 $dokka.location:com.avaya.axp.omni.sdk.core/EngagementNotFound///PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-engagement-not-found/index.html
 $dokka.location:com.avaya.axp.omni.sdk.core/FieldChangedListener///PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-field-changed-listener/index.html
@@ -159,6 +160,12 @@ $dokka.location:com.avaya.axp.omni.sdk.core/SdkConfigMap///PointingToDeclaration
 $dokka.location:com.avaya.axp.omni.sdk.core/SdkNotConfiguredException///PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-sdk-not-configured-exception/index.html
 $dokka.location:com.avaya.axp.omni.sdk.core/SdkNotConfiguredException/SdkNotConfiguredException/#/PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-sdk-not-configured-exception/-sdk-not-configured-exception.html
 $dokka.location:com.avaya.axp.omni.sdk.core/SessionChangedListener///PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-session-changed-listener/index.html
+$dokka.location:com.avaya.axp.omni.sdk.core/SessionFeatureParameter///PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-session-feature-parameter/index.html
+$dokka.location:com.avaya.axp.omni.sdk.core/SessionFeatureParameter/SessionFeatureParameter/#kotlin.String#kotlin.Boolean#kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.collections.Map[kotlin.String,com.avaya.axp.omni.sdk.core.SessionFeatureParameter]/PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-session-feature-parameter/-session-feature-parameter.html
+$dokka.location:com.avaya.axp.omni.sdk.core/SessionFeatureParameter/configurations/#/PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-session-feature-parameter/configurations.html
+$dokka.location:com.avaya.axp.omni.sdk.core/SessionFeatureParameter/enabled/#/PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-session-feature-parameter/enabled.html
+$dokka.location:com.avaya.axp.omni.sdk.core/SessionFeatureParameter/name/#/PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-session-feature-parameter/name.html
+$dokka.location:com.avaya.axp.omni.sdk.core/SessionFeatureParameter/properties/#/PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-session-feature-parameter/properties.html
 $dokka.location:com.avaya.axp.omni.sdk.core/SessionId///PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-session-id/index.html
 $dokka.location:com.avaya.axp.omni.sdk.core/SessionNotFound///PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-session-not-found/index.html
 $dokka.location:com.avaya.axp.omni.sdk.core/Unauthorized///PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-unauthorized/index.html
@@ -166,6 +173,7 @@ $dokka.location:com.avaya.axp.omni.sdk.core/UnknownError///PointingToDeclaration
 $dokka.location:com.avaya.axp.omni.sdk.core/UserSession///PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-user-session/index.html
 $dokka.location:com.avaya.axp.omni.sdk.core/UserSession/conversations/#/PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-user-session/conversations.html
 $dokka.location:com.avaya.axp.omni.sdk.core/UserSession/displayName/#/PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-user-session/display-name.html
+$dokka.location:com.avaya.axp.omni.sdk.core/UserSession/featuresConfigurations/#/PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-user-session/features-configurations.html
 $dokka.location:com.avaya.axp.omni.sdk.core/UserSession/participantId/#/PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-user-session/participant-id.html
 $dokka.location:com.avaya.axp.omni.sdk.core/UserSession/sessionId/#/PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-user-session/session-id.html
 $dokka.location:com.avaya.axp.omni.sdk.core/UserSession/sessionParameters/#/PointingToDeclaration/-a-x-p -core/com.avaya.axp.omni.sdk.core/-user-session/session-parameters.html

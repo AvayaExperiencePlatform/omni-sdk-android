@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.google.services)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -21,7 +22,9 @@ android {
             useSupportLibrary = true
         }
     }
-
+    buildFeatures {
+        buildConfig = true
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -54,9 +57,9 @@ android {
 }
 
 dependencies {
-    implementation("com.avaya.axp.omni.sdk:core:1.0.0")
-    implementation("com.avaya.axp.omni.sdk:messaging:1.0.0")
-    implementation("com.avaya.axp.omni.sdk:messaging-ui:1.0.0")
+    implementation("com.avaya.axp.omni.sdk:core:1.1.0")
+    implementation("com.avaya.axp.omni.sdk:messaging:1.1.0")
+    implementation("com.avaya.axp.omni.sdk:messaging-ui:1.1.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -78,8 +81,8 @@ dependencies {
     implementation(libs.compose.material.iconsext)
     implementation(libs.okhttp.logging)
 
-    implementation(libs.firebase.common.ktx)
     implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.common.ktx)
     implementation(libs.firebase.messaging)
     implementation(libs.androidx.work)
 

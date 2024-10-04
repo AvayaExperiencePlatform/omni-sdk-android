@@ -31,7 +31,7 @@ fun AppNavHost(
             })
         }
         composable(route = NavigationRoute.SettingsRoute.route) {
-             SettingsScreen(onNavUp = navController::navigateUp)
+            SettingsScreen(onNavUp = navController::navigateUp)
         }
     }
 }

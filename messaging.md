@@ -308,4 +308,37 @@ To access participants that are only related to messaging, you can get them by
 val messagingParticipants = conversation.participants(AxpChannel.MESSAGING)
 ```
 
+### Monitoring Typing Participants
+
+You can monitor participants who are typing in a conversation by adding a 
+listener to the conversation or by observing the flow.
+
+```kotlin
+// Using a listener
+conversation.addTypingStartedListener { participant ->
+    // You can now use the participant who started typing
+}
+conversation.addTypingStoppedListener { participant ->
+    // You can now use the participant who stopped typing
+}
+```
+or
+
+```kotlin
+// Using flow
+conversation.typingParticipantsFlow.collect { typingParticipants ->
+    // You can now use the set of participants who are typing
+    // Empty set indicates no participant is typing.
+}
+```
+
+### Send typing status
+
+You can send typing status to the conversation by calling the `notifyUserTyping()` method whenever user is typing.
+Rate limiting is handled by messaging sdk, hence this function can be called on every keystroke.
+
+```kotlin
+conversation.notifyUserTyping() // call this method when user is typing
+```
+
 # Package com.avaya.axp.omni.sdk.messaging
